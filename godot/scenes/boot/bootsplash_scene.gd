@@ -21,7 +21,7 @@ func _ready():
 	.finished.connect(_fade_out)
 	
 func _process(_delta):
-	if interuptable and Input.is_action_just_pressed("exit"):
+	if interuptable and (Input.is_action_just_pressed("exit") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
 		_change_scene()
 	
 func _fade_out():
