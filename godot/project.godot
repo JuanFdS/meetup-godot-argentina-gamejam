@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="MyGame"
+config/name="Juego"
 run/main_scene="res://scenes/boot/godot/godot_bootsplash_scene.tscn"
 config/features=PackedStringArray("4.6")
 config/icon="res://icon.svg"
@@ -25,8 +25,6 @@ UserSettings="*res://settings/user_settings.gd"
 
 [display]
 
-window/size/viewport_width=576
-window/size/viewport_height=324
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
