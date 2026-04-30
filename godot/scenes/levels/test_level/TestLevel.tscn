@@ -3,15 +3,36 @@
 [ext_resource type="Script" uid="uid://c1vfbvrnan24t" path="res://scenes/levels/level.gd" id="1_3vtac"]
 [ext_resource type="Script" uid="uid://ca3amvhd7i843" path="res://scenes/game_elements/camino/camino.gd" id="1_cfq6v"]
 [ext_resource type="Script" uid="uid://4jws3ox8i2r1" path="res://scenes/game_elements/camino/star_path.gd" id="2_2eagb"]
+[ext_resource type="Script" uid="uid://bjni8kuiip04p" path="res://scenes/game_elements/cadenas/dibujador_de_cadenas.gd" id="2_lln15"]
 [ext_resource type="Script" uid="uid://bc8ulxuxgbp58" path="res://scenes/game_elements/asteroide/asteroide.gd" id="3_72f13"]
 [ext_resource type="Script" uid="uid://dk4jw5ve6xtff" path="res://scenes/game_elements/base/base.gd" id="4_oe0ub"]
 [ext_resource type="Script" uid="uid://bmen2r7b5pof5" path="res://scenes/hud/hud.gd" id="4_tesqw"]
 [ext_resource type="Script" uid="uid://bg2i0o4siw35e" path="res://scenes/game_elements/camera/camera.gd" id="5_lvj7e"]
 [ext_resource type="SystemFont" uid="uid://df3vua8i23tow" path="res://assets/fonts/hud_default_font.tres" id="5_rrrqm"]
-[ext_resource type="Script" uid="uid://do2ihvcsnx887" path="res://scenes/game_elements/torretas/spawn_torreta_button.gd" id="7_rho34"]
+[ext_resource type="Script" uid="uid://jnk6ktqfl50d" path="res://scenes/levels/test_level/panel_container.gd" id="9_lln15"]
 [ext_resource type="Script" uid="uid://d3ntdvhuhk5jj" path="res://scenes/levels/game_over_message.gd" id="10_l0ea6"]
 [ext_resource type="Script" uid="uid://xwiry1f5gslj" path="res://scenes/levels/play_again.gd" id="11_6d6c0"]
 [ext_resource type="PackedScene" uid="uid://c4mqd7q45joxi" path="res://scenes/music/Music.tscn" id="12_w0124"]
+
+[sub_resource type="Gradient" id="Gradient_lln15"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nfj1d"]
+gradient = SubResource("Gradient_lln15")
+width = 32
+height = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lln15"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 20
 
 [sub_resource type="Gradient" id="Gradient_5womf"]
 offsets = PackedFloat32Array(0)
@@ -193,6 +214,30 @@ _data = {
 script = ExtResource("1_3vtac")
 caminos = [NodePath("Camino")]
 
+[node name="DibujadorDeCadenas" type="Node2D" parent="." unique_id=1619066509]
+unique_name_in_owner = true
+z_index = 1
+script = ExtResource("2_lln15")
+
+[node name="Pointer" type="Node2D" parent="DibujadorDeCadenas" unique_id=1370177741]
+
+[node name="Marker" type="Sprite2D" parent="DibujadorDeCadenas/Pointer" unique_id=1422874135]
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+texture = SubResource("GradientTexture2D_nfj1d")
+
+[node name="Label" type="Label" parent="DibujadorDeCadenas/Pointer" unique_id=701930378]
+modulate = Color(1, 1, 1, 0.8627451)
+z_index = 1
+offset_left = 30.0
+offset_top = 23.0
+offset_right = 222.0
+offset_bottom = 108.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lln15")
+text = "Mantener Click
+para desplegar torretas
+encadenadas"
+
 [node name="Background" type="Sprite2D" parent="." unique_id=802644835]
 z_index = -1
 position = Vector2(-66, -51.999996)
@@ -255,15 +300,6 @@ position = Vector2(-6, -13)
 color = Color(0.54509807, 0.31764707, 0.19215687, 1)
 polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
 
-[node name="Button" type="Button" parent="Asteroide" unique_id=919583682]
-offset_left = -32.0
-offset_top = -28.0
-offset_right = 40.0
-offset_bottom = 27.0
-text = "Agregar
-Torreta"
-script = ExtResource("7_rho34")
-
 [node name="Asteroide2" type="Node2D" parent="." unique_id=724039606]
 position = Vector2(124, 286)
 script = ExtResource("3_72f13")
@@ -272,15 +308,6 @@ script = ExtResource("3_72f13")
 position = Vector2(-13.07119, -5.113118)
 color = Color(0.54509807, 0.31764707, 0.19215687, 1)
 polygon = PackedVector2Array(-54.810608, -35.899803, 33.437775, -67.09632, 81, -25, 92, 21, 65, 40, 16, 69, -34, 77, -72, 29)
-
-[node name="Button" type="Button" parent="Asteroide2" unique_id=1824037036]
-offset_left = -39.0
-offset_top = -22.0
-offset_right = 33.0
-offset_bottom = 33.0
-text = "Agregar
-Torreta"
-script = ExtResource("7_rho34")
 
 [node name="Asteroide3" type="Node2D" parent="." unique_id=1619486736]
 position = Vector2(476, 67.99999)
@@ -292,15 +319,6 @@ rotation = 0.28875422
 color = Color(0.54509807, 0.31764707, 0.19215687, 1)
 polygon = PackedVector2Array(-57.60608, -79.7906, 106.72958, -64.69769, 158.1365, -1.6871338, 142.2732, 41.83705, 77.70477, 79.993576, 15.992615, 101.36192, -65.63156, 84.31789, -103.037415, -5.319168)
 
-[node name="Button" type="Button" parent="Asteroide3" unique_id=595853178]
-offset_left = -56.0
-offset_top = -5.9999924
-offset_right = 16.0
-offset_bottom = 49.000008
-text = "Agregar
-Torreta"
-script = ExtResource("7_rho34")
-
 [node name="Asteroide4" type="Node2D" parent="." unique_id=534755766]
 position = Vector2(781, 306)
 script = ExtResource("3_72f13")
@@ -309,15 +327,6 @@ script = ExtResource("3_72f13")
 rotation = 0.28875422
 color = Color(0.54509807, 0.31764707, 0.19215687, 1)
 polygon = PackedVector2Array(-57.60608, -79.7906, 70.05371, -78.80023, 147.63281, -15.923462, 132.65393, 28.704254, 92.841675, 88.70413, 15.992615, 101.36192, -65.63156, 84.31789, -103.037415, -5.319168)
-
-[node name="Button" type="Button" parent="Asteroide4" unique_id=2032771203]
-offset_left = -55.0
-offset_top = -3.000002
-offset_right = 17.0
-offset_bottom = 52.0
-text = "Agregar
-Torreta"
-script = ExtResource("7_rho34")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=841667348 node_paths=PackedStringArray("nivel")]
 script = ExtResource("4_tesqw")
@@ -341,6 +350,7 @@ offset_bottom = -588.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_72f13")
+script = ExtResource("9_lln15")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/Control/PanelContainer" unique_id=289244237]
 layout_mode = 2
@@ -353,6 +363,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_tesqw")
 [node name="StartWaveButton" type="Button" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=1049365203]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 1
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("5_rrrqm")
 theme_override_font_sizes/font_size = 30

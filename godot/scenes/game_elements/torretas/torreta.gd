@@ -1,3 +1,4 @@
+class_name Torreta
 extends Node2D
 const DISPARO = preload("uid://ddqsjy7kd6id7")
 
