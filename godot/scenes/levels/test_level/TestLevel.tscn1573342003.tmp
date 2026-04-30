@@ -12,15 +12,15 @@
 [ext_resource type="SystemFont" uid="uid://df3vua8i23tow" path="res://assets/fonts/hud_default_font.tres" id="5_rrrqm"]
 [ext_resource type="Texture2D" uid="uid://cx83drgtjjbaf" path="res://assets/images/naves/argentina.png" id="6_nfj1d"]
 [ext_resource type="Script" uid="uid://jnk6ktqfl50d" path="res://scenes/levels/test_level/panel_container.gd" id="9_lln15"]
-[ext_resource type="Script" uid="uid://8ecml2or4vrs" path="res://scenes/game_elements/asteroide/asteroide_area.gd" id="9_mq7tu"]
 [ext_resource type="Script" uid="uid://d3ntdvhuhk5jj" path="res://scenes/levels/game_over_message.gd" id="10_l0ea6"]
 [ext_resource type="Script" uid="uid://xwiry1f5gslj" path="res://scenes/levels/play_again.gd" id="11_6d6c0"]
 [ext_resource type="PackedScene" uid="uid://c4mqd7q45joxi" path="res://scenes/music/Music.tscn" id="12_w0124"]
 [ext_resource type="Shader" uid="uid://hgme7icmo77q" path="res://scenes/game_elements/cadenas/laser.gdshader" id="16_sf55r"]
+[ext_resource type="PackedScene" uid="uid://3x830hanhcvk" path="res://scenes/game_elements/cadenas/laser_sprite.tscn" id="17_mq7tu"]
 
 [sub_resource type="Gradient" id="Gradient_lln15"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 0.39215687)
+colors = PackedColorArray(0, 1, 0, 0.39215687)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nfj1d"]
 gradient = SubResource("Gradient_lln15")
@@ -37,9 +37,6 @@ border_width_left = 2
 border_width_top = 2
 border_color = Color(1, 1, 1, 1)
 corner_radius_bottom_right = 20
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sf55r"]
-radius = 2.828427
 
 [sub_resource type="Curve2D" id="Curve2D_5womf"]
 _data = {
@@ -90,18 +87,6 @@ _data = {
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lvj7e"]
 noise_type = 3
 frequency = 0.8
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mq7tu"]
-points = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ta2wi"]
-points = PackedVector2Array(-54.810608, -35.899803, 33.437775, -67.09632, 81, -25, 92, 21, 65, 40, 16, 69, -34, 77, -72, 29)
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xvx78"]
-points = PackedVector2Array(-57.60608, -79.7906, 106.72958, -64.69769, 158.1365, -1.6871338, 142.2732, 41.83705, 77.70477, 79.993576, 15.992615, 101.36192, -65.63156, 84.31789, -103.037415, -5.319168)
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_yi6fa"]
-points = PackedVector2Array(-57.60608, -79.7906, 70.05371, -78.80023, 147.63281, -15.923462, 132.65393, 28.704254, 92.841675, 88.70413, 15.992615, 101.36192, -65.63156, 84.31789, -103.037415, -5.319168)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72f13"]
 bg_color = Color(0.3640713, 0.5877615, 0.8452802, 1)
@@ -275,6 +260,14 @@ shader_parameter/y_offset = 0.0
 shader_parameter/fixed_edge_size = 0.05
 shader_parameter/noise_scale = Vector2(1, 1)
 
+[sub_resource type="Gradient" id="Gradient_sf55r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ta2wi"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_sf55r")
+width = 200
+height = 200
+
 [node name="TestLevel" type="Node2D" unique_id=550200690 node_paths=PackedStringArray("caminos")]
 script = ExtResource("1_3vtac")
 caminos = [NodePath("Camino")]
@@ -303,12 +296,11 @@ text = "Mantener Click
 para desplegar torretas
 encadenadas"
 
-[node name="DetectorDeAsteroide" type="Area2D" parent="DibujadorDeCadenas/Pointer" unique_id=585324518]
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DibujadorDeCadenas/Pointer/DetectorDeAsteroide" unique_id=555771267]
-shape = SubResource("CircleShape2D_sf55r")
+[node name="Background" type="Sprite2D" parent="." unique_id=802644835]
+z_index = -1
+scale = Vector2(0.6046297, 0.60462964)
+texture = ExtResource("3_11iyu")
+centered = false
 
 [node name="Camino" type="Node2D" parent="." unique_id=1689207669]
 script = ExtResource("1_cfq6v")
@@ -348,7 +340,7 @@ autoplay = &"hover"
 anchor_mode = 0
 script = ExtResource("5_lvj7e")
 noise = SubResource("FastNoiseLite_lvj7e")
-max_shake_intensity = 50.0
+max_shake_intensity = 30.0
 shake_attenuation = 60.0
 
 [node name="Asteroide" type="Node2D" parent="." unique_id=728750948]
@@ -360,16 +352,6 @@ position = Vector2(-6, -13)
 color = Color(0.54509807, 0.31764707, 0.19215687, 1)
 polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
 
-[node name="Area2D" type="Area2D" parent="Asteroide/Polygon2D" unique_id=626880067 node_paths=PackedStringArray("asteroide")]
-collision_layer = 16
-collision_mask = 0
-script = ExtResource("9_mq7tu")
-asteroide = NodePath("../..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide/Polygon2D/Area2D" unique_id=819967091]
-scale = Vector2(0.6, 0.6)
-shape = SubResource("ConvexPolygonShape2D_mq7tu")
-
 [node name="Asteroide2" type="Node2D" parent="." unique_id=724039606]
 position = Vector2(124, 286)
 script = ExtResource("3_72f13")
@@ -378,16 +360,6 @@ script = ExtResource("3_72f13")
 position = Vector2(-13.07119, -5.113118)
 color = Color(0.54509807, 0.31764707, 0.19215687, 1)
 polygon = PackedVector2Array(-54.810608, -35.899803, 33.437775, -67.09632, 81, -25, 92, 21, 65, 40, 16, 69, -34, 77, -72, 29)
-
-[node name="Area2D" type="Area2D" parent="Asteroide2/Polygon2D" unique_id=2079940673 node_paths=PackedStringArray("asteroide")]
-collision_layer = 16
-collision_mask = 0
-script = ExtResource("9_mq7tu")
-asteroide = NodePath("../../../Asteroide")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide2/Polygon2D/Area2D" unique_id=1534975471]
-scale = Vector2(0.6, 0.6)
-shape = SubResource("ConvexPolygonShape2D_ta2wi")
 
 [node name="Asteroide3" type="Node2D" parent="." unique_id=1619486736]
 position = Vector2(476, 67.99999)
@@ -399,16 +371,6 @@ rotation = 0.28875422
 color = Color(0.54509807, 0.31764707, 0.19215687, 1)
 polygon = PackedVector2Array(-57.60608, -79.7906, 106.72958, -64.69769, 158.1365, -1.6871338, 142.2732, 41.83705, 77.70477, 79.993576, 15.992615, 101.36192, -65.63156, 84.31789, -103.037415, -5.319168)
 
-[node name="Area2D" type="Area2D" parent="Asteroide3/Polygon2D" unique_id=912864502 node_paths=PackedStringArray("asteroide")]
-collision_layer = 16
-collision_mask = 0
-script = ExtResource("9_mq7tu")
-asteroide = NodePath("../../../Asteroide")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide3/Polygon2D/Area2D" unique_id=759042443]
-scale = Vector2(0.6, 0.6)
-shape = SubResource("ConvexPolygonShape2D_xvx78")
-
 [node name="Asteroide4" type="Node2D" parent="." unique_id=534755766]
 position = Vector2(781, 306)
 script = ExtResource("3_72f13")
@@ -417,16 +379,6 @@ script = ExtResource("3_72f13")
 rotation = 0.28875422
 color = Color(0.54509807, 0.31764707, 0.19215687, 1)
 polygon = PackedVector2Array(-57.60608, -79.7906, 70.05371, -78.80023, 147.63281, -15.923462, 132.65393, 28.704254, 92.841675, 88.70413, 15.992615, 101.36192, -65.63156, 84.31789, -103.037415, -5.319168)
-
-[node name="Area2D" type="Area2D" parent="Asteroide4/Polygon2D" unique_id=1013258880 node_paths=PackedStringArray("asteroide")]
-collision_layer = 16
-collision_mask = 0
-script = ExtResource("9_mq7tu")
-asteroide = NodePath("../../../Asteroide")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide4/Polygon2D/Area2D" unique_id=623278925]
-scale = Vector2(0.6, 0.6)
-shape = SubResource("ConvexPolygonShape2D_yi6fa")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=841667348 node_paths=PackedStringArray("nivel")]
 script = ExtResource("4_tesqw")
@@ -564,12 +516,5 @@ material = SubResource("ShaderMaterial_mq7tu")
 points = PackedVector2Array(431, 186, 640, 263, 941, 180, 1015, 196, 1139, 216)
 width = 30.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=953205176]
-layer = -1
-
-[node name="Background" type="Sprite2D" parent="CanvasLayer" unique_id=802644835]
-modulate = Color(0.4693026, 0.46929413, 0.46929634, 1)
-z_index = -1
-scale = Vector2(0.6046297, 0.60462964)
-texture = ExtResource("3_11iyu")
-centered = false
+[node name="LaserSprite" parent="." unique_id=257009757 instance=ExtResource("17_mq7tu")]
+texture = SubResource("GradientTexture2D_ta2wi")

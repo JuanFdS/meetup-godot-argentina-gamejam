@@ -1,0 +1,2 @@
+shader laser - https://godotshaders.com/shader/energy-beams/
+outline - https://godotshaders.com/shader/all-in-one-outline-shader/

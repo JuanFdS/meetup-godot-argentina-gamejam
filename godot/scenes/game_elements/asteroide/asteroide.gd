@@ -1,3 +1,4 @@
+class_name Asteroide
 extends Node2D
 
 var rotation_per_second: float
@@ -7,3 +8,6 @@ func _ready():
 
 func _process(delta: float) -> void:
 	$Polygon2D.rotation += rotation_per_second * delta
+
+func esta_libre():
+	return true
