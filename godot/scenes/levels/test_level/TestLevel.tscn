@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://do2ihvcsnx887" path="res://scenes/game_elements/torretas/spawn_torreta_button.gd" id="7_rho34"]
 [ext_resource type="Script" uid="uid://d3ntdvhuhk5jj" path="res://scenes/levels/game_over_message.gd" id="10_l0ea6"]
 [ext_resource type="Script" uid="uid://xwiry1f5gslj" path="res://scenes/levels/play_again.gd" id="11_6d6c0"]
+[ext_resource type="PackedScene" uid="uid://c4mqd7q45joxi" path="res://scenes/music/Music.tscn" id="12_w0124"]
 
 [sub_resource type="Gradient" id="Gradient_5womf"]
 offsets = PackedFloat32Array(0)
@@ -443,3 +444,6 @@ offset_bottom = 765.0001
 theme_override_font_sizes/font_size = 40
 text = "Jugar de nuevo"
 script = ExtResource("11_6d6c0")
+
+[node name="Music" parent="." unique_id=1600911506 instance=ExtResource("12_w0124")]
+unique_name_in_owner = true
