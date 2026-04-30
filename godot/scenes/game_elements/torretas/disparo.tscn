@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ddqsjy7kd6id7"]
+
+[ext_resource type="Script" uid="uid://bm6ik82b6xrh1" path="res://scenes/game_elements/torretas/disparo.gd" id="1_ob6x7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vja0"]
+size = Vector2(24, 12)
+
+[node name="Disparo" type="Node2D" unique_id=821356321]
+script = ExtResource("1_ob6x7")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=611284467]
+position = Vector2(-2, 1)
+polygon = PackedVector2Array(-7, -6, -8, 3, 12, 3, 12, -6)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1100203086]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=773084772]
+shape = SubResource("RectangleShape2D_7vja0")

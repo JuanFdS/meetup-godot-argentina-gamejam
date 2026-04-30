@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b2rby174o7c42"]
+
+[ext_resource type="Script" uid="uid://ca3amvhd7i843" path="res://scenes/game_elements/camino/camino.gd" id="1_cfq6v"]
+[ext_resource type="Script" uid="uid://4jws3ox8i2r1" path="res://scenes/game_elements/camino/star_path.gd" id="2_2eagb"]
+
+[sub_resource type="Gradient" id="Gradient_5womf"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cfq6v"]
+gradient = SubResource("Gradient_5womf")
+
+[sub_resource type="Curve2D" id="Curve2D_5womf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -78, -44, 0, 0, 0, 0, 100, 59, 0, 0, 0, 0, 170, 107, 0, 0, 0, 0, 218, 164, 0, 0, 0, 0, 272, 236, 0, 0, 0, 0, 350, 264, 0, 0, 0, 0, 481, 263, 0, 0, 0, 0, 563, 268, 0, 0, 0, 0, 593, 345, 0, 0, 0, 0, 597, 418, 0, 0, 0, 0, 598, 552)
+}
+point_count = 11
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5womf"]
+radius = 40.012497
+
+[sub_resource type="LabelSettings" id="LabelSettings_2eagb"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="TestLevel" type="Node2D" unique_id=550200690]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=802644835]
+z_index = -1
+scale = Vector2(18.15625, 10.328124)
+texture = SubResource("GradientTexture2D_cfq6v")
+centered = false
+
+[node name="Camino" type="Node2D" parent="." unique_id=1689207669]
+script = ExtResource("1_cfq6v")
+
+[node name="StarPath" type="Node2D" parent="Camino" unique_id=2022589470 node_paths=PackedStringArray("path")]
+script = ExtResource("2_2eagb")
+path = NodePath("../Path2D")
+star_scale = 0.30000000000000004
+star_scale_random = 0.2
+max_distance_from_path = 20.0
+
+[node name="Path2D" type="Path2D" parent="Camino" unique_id=973757653]
+curve = SubResource("Curve2D_5womf")
+
+[node name="Base" type="Node2D" parent="." unique_id=722738729]
+position = Vector2(599, 545)
+
+[node name="Area2D" type="Area2D" parent="Base" unique_id=1260161548]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Area2D" unique_id=1390180467]
+shape = SubResource("CircleShape2D_5womf")
+
+[node name="Polygon2D" type="Polygon2D" parent="Base" unique_id=1323737831]
+polygon = PackedVector2Array(-42, -5, -19, -45, 25, -43, 48, -7, 20, 32, -31, 31)
+
+[node name="Label" type="Label" parent="Base" unique_id=207354952]
+offset_left = -35.0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Base"
+label_settings = SubResource("LabelSettings_2eagb")
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1703776152]
+anchor_mode = 0
