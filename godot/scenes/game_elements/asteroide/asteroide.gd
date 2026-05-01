@@ -1,13 +1,28 @@
 class_name Asteroide
 extends Node2D
 
+@export var capacidad_de_torretas: int = 1
 var rotation_per_second: float
+var torretas: Array[Node] = []
 
 func _ready():
+	add_to_group("asteroide")
+	$Polygon2D/Area2D.asteroide = self
 	rotation_per_second = PI / 12 * [-1, 1].pick_random()
 
 func _process(delta: float) -> void:
 	$Polygon2D.rotation += rotation_per_second * delta
 
+func agregar_torreta(torreta: Torreta):
+	torretas.push_back(torreta)
+	torreta.tree_exited.connect(func():
+		if torreta in torretas:
+			torretas.erase(torreta)
+	)
+	torreta.agregada_a(self)
+
+func torreta_fue_quitada(torreta: Torreta):
+	torretas.erase(torreta)
+
 func esta_libre():
-	return true
+	return torretas.size() < capacidad_de_torretas

@@ -297,7 +297,7 @@ rotation = 0.7853982
 scale = Vector2(0.99999994, 0.99999994)
 texture = SubResource("GradientTexture2D_nfj1d")
 
-[node name="Label" type="RichTextLabel" parent="DibujadorDeCadenas/Pointer" unique_id=135918675]
+[node name="Label" type="Label" parent="DibujadorDeCadenas/Pointer" unique_id=701930378]
 modulate = Color(1, 1, 1, 0.8627451)
 z_index = 1
 offset_left = 30.0
@@ -305,11 +305,9 @@ offset_top = 23.0
 offset_right = 222.0
 offset_bottom = 108.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_lln15")
-bbcode_enabled = true
 text = "Mantener Click
 para desplegar torretas
 encadenadas"
-fit_content = true
 
 [node name="DetectorDeAsteroide" type="Area2D" parent="DibujadorDeCadenas/Pointer" unique_id=585324518]
 collision_layer = 0
@@ -378,7 +376,6 @@ shake_attenuation = 60.0
 [node name="Asteroide" type="Node2D" parent="." unique_id=728750948]
 position = Vector2(401, 386)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide" unique_id=1043737418]
 position = Vector2(-6, -13)
@@ -398,7 +395,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide5" type="Node2D" parent="." unique_id=122660090]
 position = Vector2(1063, 537)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide5" unique_id=834616886]
 position = Vector2(-6, -13)
@@ -418,7 +414,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide6" type="Node2D" parent="." unique_id=288544757]
 position = Vector2(941, 137)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide6" unique_id=2030636191]
 position = Vector2(-6, -13)
@@ -438,7 +433,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide2" type="Node2D" parent="." unique_id=724039606]
 position = Vector2(124, 286)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide2" unique_id=2012519361]
 position = Vector2(-13.07119, -5.113118)
@@ -458,7 +452,6 @@ shape = SubResource("ConvexPolygonShape2D_ta2wi")
 [node name="Asteroide3" type="Node2D" parent="." unique_id=1619486736]
 position = Vector2(476, 67.99999)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide3" unique_id=1410310560]
 position = Vector2(-30.171492, -15.958729)
@@ -479,7 +472,6 @@ shape = SubResource("ConvexPolygonShape2D_xvx78")
 [node name="Asteroide4" type="Node2D" parent="." unique_id=534755766]
 position = Vector2(781, 306)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide4" unique_id=1576978188]
 rotation = 0.28875422

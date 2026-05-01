@@ -29,6 +29,6 @@ gradient = SubResource("Gradient_sf55r")
 width = 200
 height = 200
 
-[node name="LaserSprite" type="Sprite2D" unique_id=257009757]
+[node name="LaserSprite" type="Sprite2D" unique_id=257009757 groups=["laser"]]
 material = SubResource("ShaderMaterial_sf55r")
 texture = SubResource("GradientTexture2D_mq7tu")

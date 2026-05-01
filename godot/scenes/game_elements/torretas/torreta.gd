@@ -9,8 +9,10 @@ var nearby_enemies: Array = []
 
 var time_between_disparos: float = 1.0 / fire_rate
 var time_until_next_disparo: float = 0.0
+var asteroide: Asteroide
 
 func _ready() -> void:
+	add_to_group("torreta")
 	area_2d.area_entered.connect(on_area_entered)
 	area_2d.area_exited.connect(on_area_exited)
 
@@ -19,6 +21,14 @@ func on_area_entered(enemy):
 
 func on_area_exited(enemy):
 	nearby_enemies.erase(enemy)
+
+func quitar_de_asteroide():
+	asteroide.torreta_fue_quitada(self)
+	asteroide = null
+	
+
+func agregada_a(un_asteroide):
+	asteroide = un_asteroide
 
 func _process(delta: float) -> void:
 	time_until_next_disparo = move_toward(time_until_next_disparo, 0.0, delta)
