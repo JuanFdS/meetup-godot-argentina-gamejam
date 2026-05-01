@@ -4,8 +4,9 @@ const DISPARO = preload("uid://ddqsjy7kd6id7")
 
 var nearby_enemies: Array = []
 @onready var area_2d: Area2D = $Area2D
-@export var fire_rate: float = 1.0
+@export var fire_rate: float = 5.0
 @onready var disparo_spawn_point: Marker2D = %DisparoSpawnPoint
+var shooting: bool = false
 
 var time_between_disparos: float = 1.0 / fire_rate
 var time_until_next_disparo: float = 0.0
@@ -32,19 +33,27 @@ func agregada_a(un_asteroide):
 
 func _process(delta: float) -> void:
 	time_until_next_disparo = move_toward(time_until_next_disparo, 0.0, delta)
-	if not nearby_enemies.is_empty():
+	shooting = not nearby_enemies.is_empty()
+	if shooting:
 		nearby_enemies.sort_custom(func(enemy_a, enemy_b): return enemy_a.global_position.distance_to(global_position) > enemy_b.global_position.distance_to(global_position))
 		var closest_enemy = nearby_enemies.front()
-		look_at(closest_enemy.global_position)
+		$AnimatedSprite2D.flip_h = closest_enemy.global_position.x > global_position.x
 		if time_until_next_disparo <= 0.0:
-			disparar()
+			disparar(closest_enemy)
+		$AnimatedSprite2D.play("default")
+	else:
+		$AnimatedSprite2D.stop()
 
-func disparar():
+func disparar(enemy):
 	time_until_next_disparo = time_between_disparos
 	var disparo = DISPARO.instantiate()
-	disparo.direction = Vector2.RIGHT.rotated(rotation)
+	var spawn_position = Vector2()
+	spawn_position.y = disparo_spawn_point.global_position.y
+	spawn_position.x = to_global(disparo_spawn_point.position * (1 if $AnimatedSprite2D.flip_h else -1)).x
+	disparo.direction = spawn_position.direction_to(enemy.global_position)
 	get_parent().add_child(disparo)
-	disparo.global_position = disparo_spawn_point.global_position
+	disparo.global_position = spawn_position
+		
 	
 	
 	
