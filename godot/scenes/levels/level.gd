@@ -55,6 +55,7 @@ func _ready():
 	await get_tree().create_timer(1.0).timeout
 	$Camino.start()
 	%DibujadorDeCadenas.visible = true
+	#prender_todo()
 
 func nave_derrotada(oro_ganado):
 	oro += oro_ganado
@@ -124,6 +125,7 @@ func on_nave_enemiga_exited(nave_enemiga):
 		change_mode(Level.Mode.Planning)
 		DialogueManager.show_dialogue_balloon(INTRO_NIVEL, "ganada_ola_%s" % ola_actual)
 		await DialogueManager.dialogue_ended
+		health = min(max_health, health + 50)
 		if ola_actual >= cantidad_olas:
 			win()
 
@@ -141,7 +143,7 @@ func varias(n, tipo):
 		array.append(tipo)
 	return array
 
-func seguidilla(segundo_inicial: float, iteraciones: int, cada_segundos: int, tipo: NaveEnemiga.Tipo, camino: Camino):
+func seguidilla(segundo_inicial: float, iteraciones: int, cada_segundos: float, tipo: NaveEnemiga.Tipo, camino: Camino):
 	var tiempo = segundo_inicial
 	var array = []
 	for i in range(iteraciones):
@@ -150,7 +152,7 @@ func seguidilla(segundo_inicial: float, iteraciones: int, cada_segundos: int, ti
 	return array
 
 func olas():
-	return [ola_1, ola_2, ola_3, ola_4, ola_5]
+	return [ola_1, ola_2, ola_3, ola_4, ola_5, ola_6]
 
 func ola_1():
 	var camino_1 = $Camino
@@ -167,9 +169,9 @@ func ola_2():
 func ola_3():
 	var camino_1 = $Camino
 	var eventos = []
-	eventos += seguidilla(1, 30, 0.5, NaveEnemiga.Tipo.Rapida, camino_1)
+	eventos += seguidilla(1, 30, 1.0, NaveEnemiga.Tipo.Rapida, camino_1)
 	eventos += seguidilla(15, 6, 2, NaveEnemiga.Tipo.Basica, camino_1)
-	eventos += seguidilla(15, 12, 0.5, NaveEnemiga.Tipo.Rapida, camino_1)
+	eventos += seguidilla(15, 12, 1.0, NaveEnemiga.Tipo.Rapida, camino_1)
 	eventos.sort_custom(func(evento1, evento2): return evento1[0] < evento2[0])
 	return  eventos
 
@@ -189,11 +191,28 @@ func ola_5():
 	var camino_2 = $Camino2
 	var eventos = []
 	eventos += seguidilla(1, 6, 1, NaveEnemiga.Tipo.Basica, camino_1)
-	eventos += seguidilla(1, 12, 0.5, NaveEnemiga.Tipo.Rapida, camino_1)
+	eventos += seguidilla(1, 12, 1.5, NaveEnemiga.Tipo.Rapida, camino_1)
 	eventos += seguidilla(1, 3, 3.5, NaveEnemiga.Tipo.Francesa, camino_2)
 	eventos += seguidilla(1, 20, 0.7, NaveEnemiga.Tipo.Inglesa, camino_2)
 	eventos.sort_custom(func(evento1, evento2): return evento1[0] < evento2[0])
 	return  eventos
+
+func ola_6():
+	var camino_1 = $Camino
+	var camino_2 = $Camino2
+	var eventos = []
+	eventos += seguidilla(1, 12, 1.5, NaveEnemiga.Tipo.Rapida, camino_1)
+	eventos += seguidilla(1, 3, 3.5, NaveEnemiga.Tipo.Francesa, camino_1)
+	eventos += seguidilla(1, 1, 0, NaveEnemiga.Tipo.Boss, camino_2)
+	eventos.sort_custom(func(evento1, evento2): return evento1[0] < evento2[0])
+	return  eventos
+
+func prender_todo():
+	oro += 200
+	habilitar_nueva_torreta_y_cadenas()
+	habilitar_primera_cadena_nueva()
+	habilitar_segundo_camino()
+	entrar_asteroides_para_ola_2()
 
 func habilitar_segundo_camino():
 	$Camino2.start()

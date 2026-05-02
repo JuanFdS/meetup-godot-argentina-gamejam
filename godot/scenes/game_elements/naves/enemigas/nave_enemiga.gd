@@ -8,7 +8,8 @@ enum Tipo {
 	Inglesa,
 	Basica,
 	Francesa,
-	Rapida
+	Rapida,
+	Boss
 }
 
 var tipo = Tipo.Inglesa
@@ -43,10 +44,16 @@ func _ready() -> void:
 			oro = 7
 		Tipo.Rapida:
 			$Imagen/Rapida.visible = true
-			health = 25
+			health = 15
 			velocidad = 250
 			danio = 10
 			oro = 4
+		Tipo.Boss:
+			$Imagen/Boss.visible = true
+			health = 1000
+			velocidad = 15
+			danio = 100
+			oro = 999
 	area_2d.area_entered.connect(on_cadena_enemiga_entered)
 	area_2d.area_exited.connect(on_cadena_enemiga_exited)
 	$HealthBar.max_value = health

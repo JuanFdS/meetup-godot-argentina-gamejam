@@ -193,11 +193,10 @@ size_flags_horizontal = 3
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=507199029]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
 bbcode_enabled = true
-text = "Character"
+text = "[color=cyan][b]Character[/b][/color]"
 fit_content = true
 scroll_active = false
 

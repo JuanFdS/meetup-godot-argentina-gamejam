@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ce1hmq888vn2t" path="res://assets/images/naves/Nave-Basica.png" id="4_tdx1q"]
 [ext_resource type="Texture2D" uid="uid://0huqrjpx67vo" path="res://assets/images/naves/Barco-frances.png" id="5_4fnpx"]
 [ext_resource type="Texture2D" uid="uid://do101avbtcje4" path="res://assets/images/naves/Nave-Rapida.png" id="6_7u2gn"]
+[ext_resource type="Texture2D" uid="uid://fhcbw5eeorp5" path="res://assets/images/naves/boss/Fase-1-IDLE.png" id="7_ou6c3"]
 [ext_resource type="PackedScene" uid="uid://2ggey1bfqj55" path="res://scenes/game_elements/label_goldup.tscn" id="8_omu26"]
 
 [sub_resource type="Animation" id="Animation_rho34"]
@@ -172,6 +173,42 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ckyg"]
+atlas = ExtResource("7_ou6c3")
+region = Rect2(0, 0, 674, 780)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej0bl"]
+atlas = ExtResource("7_ou6c3")
+region = Rect2(674, 0, 674, 780)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs7jj"]
+atlas = ExtResource("7_ou6c3")
+region = Rect2(1348, 0, 674, 780)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik3yt"]
+atlas = ExtResource("7_ou6c3")
+region = Rect2(2022, 0, 674, 780)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_36lsh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ckyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej0bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs7jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik3yt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6cco"]
 radius = 33.0
 
@@ -261,6 +298,13 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_576ft")
 autoplay = "default"
 frame_progress = 0.72588646
+
+[node name="Boss" type="AnimatedSprite2D" parent="Imagen" unique_id=1034787434]
+visible = false
+scale = Vector2(0.35163206, 0.35163206)
+sprite_frames = SubResource("SpriteFrames_36lsh")
+autoplay = "default"
+frame_progress = 0.8840044
 
 [node name="Area2D" type="Area2D" parent="." unique_id=513073188]
 collision_layer = 2
