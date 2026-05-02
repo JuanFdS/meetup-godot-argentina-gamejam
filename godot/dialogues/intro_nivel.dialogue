@@ -4,6 +4,7 @@ Rosas, el Restaurado: El acceso principal a la Confederación Planetaria Argenti
 Rosas, el Restaurado: No los debemos dejar llegar al planeta.
 Rosas, el Restaurado: Nuestro Código internacional es muy corto. Paz y amistad con los que nos respetan, ¡y la guerra a muerte a los que se atreven a insultarlo!
 => END
+
 ~ ganada_ola_1
 Rosas, el Restaurado: Bien hecho, capitán.
 do Guion.dialogo_post_ola_1_entran_asteroides()
@@ -12,15 +13,20 @@ Rosas, el Restaurado: Cuento con usted.
 => END
 
 ~ ganada_ola_2
-Rosas, el Restaurado: Cuidado, parece que nuestros enemigos están mandando flotas más avanzadas. 
-Rosas, el Restaurado: Recuerde que puede cambiar la ubicación de sus torretas de un asteroide a otro.
-Rosas, el Restaurado: O incluso, recuperar el oro gastado destruyendo una torreta. Para hacer eso debe arrastrar una torreta y soltarla en el vacío del espacio.
+Rosas, el Restaurado: Cuidado, parece que nuestros enemigos están mandando flotas más avanzadas.
+do Guion.habilitar_primera_cadena()
+Rosas, el Restaurado: Se ha habilitado un nuevo tipo de de Cadena.
+Rosas, el Restaurado: Tenga en cuenta que puede seleccionar el tipo de Torreta y de Cadena a desplegar en el panel derecho.
 => END
 
 ~ ganada_ola_3
 Rosas, el Restaurado: Por ahora todo marcha bien, pero no se confíe.
-Rosas, el Restaurado: A partir de ahora tiene a su disposición un nuevo tipo de torreta y 2 nuevos tipos de cadenas.
+Rosas, el Restaurado: A partir de ahora tiene a su disposición un nuevo tipo de torreta y un nuevos tipos de cadenas.
 do Guion.habilitar_nueva_torreta_y_cadenas()
 Rosas, el Restaurado: Los enemigos descubrieron un nuevo paso a través de los asteroides. Desde ahora tendrá que defender desde dos frentes.
 do Guion.habilitar_segundo_camino()
+=> END
+
+~ ganada_ola_4
+Rosas, el Restaurado: Lo lograste, defendiste la soberanía argentina.
 => END

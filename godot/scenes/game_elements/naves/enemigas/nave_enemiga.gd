@@ -43,8 +43,8 @@ func _ready() -> void:
 			oro = 7
 		Tipo.Rapida:
 			$Imagen/Rapida.visible = true
-			health = 17.5
-			velocidad = 150
+			health = 25
+			velocidad = 250
 			danio = 10
 			oro = 4
 	area_2d.area_entered.connect(on_cadena_enemiga_entered)
@@ -89,16 +89,20 @@ func hit_by_explosion(un_danio):
 	reducir_salud(un_danio)
 
 func reducir_salud(un_danio):
+	if is_queued_for_deletion():
+		return
 	$HealthBar.visible = true
 	health -= un_danio
 	if health <= 0.0:
 		queue_free()
 		var particles = $GPUParticles2D
-		particles.reparent(get_parent())
-		particles.global_position = global_position
-		particles.restart()
+		if is_instance_valid(particles):
+			particles.reparent(get_parent())
+			particles.global_position = global_position
+			particles.restart()
 		var gold_up_label = $Label
-		gold_up_label.reparent(get_parent())
-		gold_up_label.global_position = global_position
-		gold_up_label.start(oro)
+		if is_instance_valid(gold_up_label):
+			gold_up_label.reparent(get_parent())
+			gold_up_label.global_position = global_position
+			gold_up_label.start(oro)
 		get_tree().get_nodes_in_group("level").front().nave_derrotada(oro)

@@ -35,10 +35,20 @@ func exit_state():
 			pass
 		State.Drawing:
 			if _can_place_torreta():
+				line.desplegada = true
 				get_parent().torreta_desplegada(unidad_actual)
 				line.modulate = Color.WHITE
 				_asteroide_bajo_el_cursor().agregar_torreta(torreta_2)
 				laser_sprite.desplegar(line)
+				if get_parent().ola_actual == 0:
+					var tween = create_tween()
+					tween.set_loops()	
+					tween.tween_property(%StartWaveButton, "modulate", Color.WHITE, 1.0).from(Color.BLACK).set_trans(Tween.TRANS_QUAD)
+					%StartWaveButton.pressed.connect(func():
+						tween.kill()
+						%StartWaveButton.modulate = Color.WHITE,
+						CONNECT_ONE_SHOT
+					)
 			else:
 				line.queue_free()
 				torreta_1.queue_free()
@@ -52,6 +62,10 @@ func exit_state():
 			laser_sprite = null
 			for un_asteroide in get_tree().get_nodes_in_group("asteroide"):
 				un_asteroide.modulate = Color.WHITE
+
+				
+				
+				
 		State.DraggingExistingTurret:
 			var asteroide = _asteroide_bajo_el_cursor()
 			if asteroide != null and asteroide.esta_libre():
@@ -109,10 +123,11 @@ func enter_state():
 func process_state():
 	match state:
 		State.Nothing:
-			if _torreta_bajo_el_cursor():
+			var torreta = _torreta_bajo_el_cursor()
+			if torreta:
 				pointer_color = Color.CYAN
 				hint_text = "Mantener Click
-para mover la torreta"
+para mover la torreta\n[font_size=14][color=gray]Click Derecho para vender la torreta ($%s)[/color][/font_size]" % torreta.get_parent().unidad.costo_total()
 			else:
 				hint_text = "Mantener Click
 para desplegar torretas
@@ -169,6 +184,9 @@ func _unhandled_input(event: InputEvent) -> void:
 					change_state(State.Drawing)
 			else:
 				change_state(State.Nothing)
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.is_pressed() and state == State.Nothing and _torreta_bajo_el_cursor():
+				_torreta_bajo_el_cursor().get_parent().queue_free()
 					
 
 func _ready() -> void:

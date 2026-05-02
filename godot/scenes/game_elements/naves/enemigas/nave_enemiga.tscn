@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ce1hmq888vn2t" path="res://assets/images/naves/Nave-Basica.png" id="4_tdx1q"]
 [ext_resource type="Texture2D" uid="uid://0huqrjpx67vo" path="res://assets/images/naves/Barco-frances.png" id="5_4fnpx"]
 [ext_resource type="Texture2D" uid="uid://do101avbtcje4" path="res://assets/images/naves/Nave-Rapida.png" id="6_7u2gn"]
-[ext_resource type="Script" uid="uid://cjl1xdxcvw1jc" path="res://scenes/game_elements/naves/enemigas/gold_up.gd" id="8_omu26"]
+[ext_resource type="PackedScene" uid="uid://2ggey1bfqj55" path="res://scenes/game_elements/label_goldup.tscn" id="8_omu26"]
 
 [sub_resource type="Animation" id="Animation_rho34"]
 length = 0.001
@@ -216,11 +216,6 @@ color = Color(1, 0.20999998, 0.20999998, 1)
 color_ramp = SubResource("GradientTexture1D_d4u3v")
 color_initial_ramp = SubResource("GradientTexture1D_omu26")
 
-[sub_resource type="LabelSettings" id="LabelSettings_7u2gn"]
-font_size = 14
-font_color = Color(1, 0.8156863, 0, 1)
-shadow_color = Color(0, 0, 0, 0.68235296)
-
 [node name="NaveEnemiga" type="PathFollow2D" unique_id=1585765628]
 rotates = false
 loop = false
@@ -236,6 +231,7 @@ position = Vector2(0, 5)
 scale = Vector2(0.8, 0.8)
 
 [node name="Inglesa" type="Sprite2D" parent="Imagen" unique_id=723503334]
+visible = false
 material = SubResource("ShaderMaterial_rho34")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_idoxs")
@@ -251,7 +247,8 @@ frame_progress = 0.92824304
 [node name="Francesa" type="AnimatedSprite2D" parent="Imagen" unique_id=2138872469]
 visible = false
 material = SubResource("ShaderMaterial_rho34")
-scale = Vector2(0.5, 0.5)
+position = Vector2(-8.125, 9.778769)
+scale = Vector2(0.6803098, 0.6803098)
 sprite_frames = SubResource("SpriteFrames_8ckyg")
 autoplay = "default"
 frame_progress = 0.024678739
@@ -291,10 +288,4 @@ one_shot = true
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_7u2gn")
 
-[node name="Label" type="Label" parent="." unique_id=1755108034]
-offset_right = 16.0
-offset_bottom = 20.0
-pivot_offset = Vector2(7, 9)
-text = "+$1"
-label_settings = SubResource("LabelSettings_7u2gn")
-script = ExtResource("8_omu26")
+[node name="Label" parent="." unique_id=1389683186 instance=ExtResource("8_omu26")]

@@ -138,14 +138,14 @@ region = Rect2(84, 60, 124, 112)
 atlas = ExtResource("12_qie6o")
 region = Rect2(848, 72, 144, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rryp4"]
-atlas = ExtResource("12_qie6o")
-region = Rect2(1108, 52, 128, 116)
-
 [sub_resource type="LabelSettings" id="LabelSettings_qie6o"]
 line_spacing = -2.0
 font_size = 20
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rryp4"]
+atlas = ExtResource("12_qie6o")
+region = Rect2(1108, 52, 128, 116)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbsax"]
 atlas = ExtResource("12_qie6o")
@@ -776,7 +776,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
-text = "30"
+text = "15"
 label_settings = ExtResource("13_an4kq")
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -788,7 +788,8 @@ texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
 cost = 30
 scene = ExtResource("17_fqbio")
-description = "[color=light_green]Daño continuo que aumenta por segundo[/color]
+description = "[color=light_green]Daño continuo que aumenta por segundo
+Rango máximo, apunta a la unidad con más salud[/color]
 [color=pink]Concentra ataque en solo una unidad a la vez[/color]"
 
 [node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton2" unique_id=1801871733]
@@ -825,7 +826,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
-text = "20"
+text = "30"
 label_settings = ExtResource("13_an4kq")
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -891,59 +892,11 @@ layout_mode = 2
 text = "Cadena"
 horizontal_alignment = 1
 
-[node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=331089034]
+[node name="TextureButton" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=105555783]
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
 cost = 10
-scene = ExtResource("22_cb3jl")
-description = "[color=light_green]Efecto realentizador[/color]
-[color=pink]No hace daño[/color]"
-
-[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1193705015]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.761906
-offset_top = -13.0
-offset_right = 24.761906
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_rryp4")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1889786384]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3/MarginContainer" unique_id=1592740273]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
-text = "20"
-label_settings = ExtResource("13_an4kq")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="TextureButton" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=105555783]
-visible = false
-layout_mode = 2
-texture_normal = ExtResource("15_yi6fa")
-script = ExtResource("13_rryp4")
 scene = ExtResource("15_eaj0v")
 description = "[color=light_green]Daño continuo.
 Si cruzan los quema
@@ -984,6 +937,54 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
 text = "20"
+label_settings = ExtResource("13_an4kq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=331089034]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("15_yi6fa")
+script = ExtResource("13_rryp4")
+scene = ExtResource("22_cb3jl")
+description = "[color=light_green]Efecto realentizador[/color]
+[color=pink]No hace daño[/color]"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1193705015]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.761906
+offset_top = -13.0
+offset_right = 24.761906
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rryp4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1889786384]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3/MarginContainer" unique_id=1592740273]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
+text = "10"
 label_settings = ExtResource("13_an4kq")
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -1032,7 +1033,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
-text = "20"
+text = "40"
 label_settings = ExtResource("13_an4kq")
 horizontal_alignment = 2
 vertical_alignment = 2

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://vpfh68vapo44" path="res://scenes/game_elements/torretas/metralleta.gd" id="1_vhggy"]
 [ext_resource type="Texture2D" uid="uid://dy7nt4npgljw4" path="res://assets/images/torretas/Metralleta.png" id="2_wauao"]
 [ext_resource type="Script" uid="uid://lcff7xjhtsyk" path="res://scenes/game_elements/torretas/picker_area.gd" id="3_e555y"]
+[ext_resource type="AudioStream" uid="uid://bar7ikxuh8ofx" path="res://assets/audio/sfx/torreta/SFX_Torreta_1.wav" id="4_1qhou"]
+[ext_resource type="AudioStream" uid="uid://4oahrlky1s1e" path="res://assets/audio/sfx/torreta/SFX_Torreta_2.wav" id="5_3i8ei"]
+[ext_resource type="AudioStream" uid="uid://copn4q4x8eid" path="res://assets/audio/sfx/torreta/SFX_Torreta_3.wav" id="6_a7ac4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vhggy"]
 
@@ -62,6 +65,14 @@ radius = 257.62958
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vja0"]
 radius = 47.042534
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0qhmn"]
+random_pitch = 1.0293022
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("4_1qhou")
+stream_1/stream = ExtResource("5_3i8ei")
+stream_2/stream = ExtResource("6_a7ac4")
+
 [node name="Torreta" type="Node2D" unique_id=2041932179]
 script = ExtResource("1_vhggy")
 
@@ -93,3 +104,7 @@ script = ExtResource("3_e555y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickerArea" unique_id=750028760]
 shape = SubResource("CircleShape2D_7vja0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1851430484]
+stream = SubResource("AudioStreamRandomizer_0qhmn")
+volume_db = -6.0

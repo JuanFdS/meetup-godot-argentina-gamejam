@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://2ggey1bfqj55"]
+
+[ext_resource type="Script" uid="uid://cjl1xdxcvw1jc" path="res://scenes/game_elements/naves/enemigas/gold_up.gd" id="1_nf1g5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7u2gn"]
+font_size = 14
+font_color = Color(1, 0.8156863, 0, 1)
+shadow_color = Color(0, 0, 0, 0.68235296)
+
+[node name="Label" type="Label" unique_id=1389683186]
+offset_right = 16.0
+offset_bottom = 20.0
+pivot_offset = Vector2(7, 9)
+text = "+$1"
+label_settings = SubResource("LabelSettings_7u2gn")
+script = ExtResource("1_nf1g5")

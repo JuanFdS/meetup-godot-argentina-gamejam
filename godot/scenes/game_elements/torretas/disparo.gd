@@ -9,6 +9,8 @@ func _ready():
 	rotation = direction.angle()
 
 func on_area_entered(area):
+	if is_queued_for_deletion():
+		return
 	area.hit_by_disparo(self)
 	queue_free()
 	var particles = $GPUParticles2D

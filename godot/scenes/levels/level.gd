@@ -52,6 +52,7 @@ func _ready():
 	music.play(mode)
 	DialogueManager.show_dialogue_balloon(INTRO_NIVEL)
 	await DialogueManager.dialogue_ended
+	await get_tree().create_timer(1.0).timeout
 	$Camino.start()
 	%DibujadorDeCadenas.visible = true
 
@@ -149,23 +150,50 @@ func seguidilla(segundo_inicial: float, iteraciones: int, cada_segundos: int, ti
 	return array
 
 func olas():
-	return [ola_1, ola_2, ola_3, ola_4]
+	return [ola_1, ola_2, ola_3, ola_4, ola_5]
 
 func ola_1():
 	var camino_1 = $Camino
-	return seguidilla(1, 10, 3.5, NaveEnemiga.Tipo.Inglesa, camino_1)
+	return seguidilla(1, 9, 3.5, NaveEnemiga.Tipo.Inglesa, camino_1)
 
 func ola_2():
 	var camino_1 = $Camino
-	return seguidilla(1, 12, 2, NaveEnemiga.Tipo.Inglesa, camino_1)
+	var eventos = []
+	eventos += seguidilla(1, 6, 2, NaveEnemiga.Tipo.Inglesa, camino_1)
+	eventos += seguidilla(2, 6, 2, NaveEnemiga.Tipo.Basica, camino_1)
+	eventos.sort_custom(func(evento1, evento2): return evento1[0] < evento2[0])
+	return  eventos
 
 func ola_3():
 	var camino_1 = $Camino
-	return seguidilla(1, 15, 2, NaveEnemiga.Tipo.Inglesa, camino_1) + seguidilla(32, 15, 2, NaveEnemiga.Tipo.Basica, camino_1)
+	var eventos = []
+	eventos += seguidilla(1, 30, 0.5, NaveEnemiga.Tipo.Rapida, camino_1)
+	eventos += seguidilla(15, 6, 2, NaveEnemiga.Tipo.Basica, camino_1)
+	eventos += seguidilla(15, 12, 0.5, NaveEnemiga.Tipo.Rapida, camino_1)
+	eventos.sort_custom(func(evento1, evento2): return evento1[0] < evento2[0])
+	return  eventos
 
 func ola_4():
 	var camino_1 = $Camino
-	return seguidilla(1, 15, 2, NaveEnemiga.Tipo.Inglesa, camino_1) + seguidilla(32, 15, 2, NaveEnemiga.Tipo.Basica, camino_1)
+	var camino_2 = $Camino2
+	var eventos = []
+	eventos += seguidilla(1, 6, 2, NaveEnemiga.Tipo.Basica, camino_1)
+	eventos += seguidilla(1, 12, 0.5, NaveEnemiga.Tipo.Rapida, camino_1)
+	eventos += seguidilla(1, 3, 5, NaveEnemiga.Tipo.Francesa, camino_2)
+	eventos += seguidilla(1, 15, 1, NaveEnemiga.Tipo.Inglesa, camino_2)
+	eventos.sort_custom(func(evento1, evento2): return evento1[0] < evento2[0])
+	return  eventos
+
+func ola_5():
+	var camino_1 = $Camino
+	var camino_2 = $Camino2
+	var eventos = []
+	eventos += seguidilla(1, 6, 1, NaveEnemiga.Tipo.Basica, camino_1)
+	eventos += seguidilla(1, 12, 0.5, NaveEnemiga.Tipo.Rapida, camino_1)
+	eventos += seguidilla(1, 3, 3.5, NaveEnemiga.Tipo.Francesa, camino_2)
+	eventos += seguidilla(1, 20, 0.7, NaveEnemiga.Tipo.Inglesa, camino_2)
+	eventos.sort_custom(func(evento1, evento2): return evento1[0] < evento2[0])
+	return  eventos
 
 func habilitar_segundo_camino():
 	$Camino2.start()
@@ -199,10 +227,12 @@ func entrar_asteroides(contenedor, asteroides_izq, asteroides_der):
 					.from(Vector2.ZERO).set_trans(Tween.TRANS_QUAD)
 	await get_tree().create_timer(3.0).timeout
 
+func habilitar_primera_cadena_nueva():
+	$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas.get_child(2).visible = true
+
 func habilitar_nueva_torreta_y_cadenas():
 	for button in [
-		$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton,
-		$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton2,
-		$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton2
+		$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas.get_child(3),
+		$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas.get_child(2),
 	]:
 		button.visible = true

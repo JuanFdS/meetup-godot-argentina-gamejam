@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.stop()
 
 func disparar(enemy):
+	$AudioStreamPlayer2D.play()
 	time_until_next_disparo = time_between_disparos
 	var disparo = DISPARO.instantiate()
 	disparo.danio = danio
