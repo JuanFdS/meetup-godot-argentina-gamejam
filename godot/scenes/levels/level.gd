@@ -1,5 +1,6 @@
 class_name Level
 extends Node2D
+const INTRO_NIVEL = preload("uid://bcwmqikww8f5f")
 
 enum Mode {
 	Planning,
@@ -42,8 +43,14 @@ var enemigos_restantes :
 		return enemigos_por_spawnear + enemigos_actuales.size()
 
 func _ready():
+	$AsteroidesAPartirDeOla2.visible = false
+	$AsteroidesAPartirDeOla2.process_mode = Node.PROCESS_MODE_DISABLED
+	%DibujadorDeCadenas.visible = false
 	base.damaged.connect(on_base_damaged)
 	music.play(mode)
+	DialogueManager.show_dialogue_balloon(INTRO_NIVEL)
+	await DialogueManager.dialogue_ended
+	%DibujadorDeCadenas.visible = true
 
 func nave_derrotada(oro_ganado):
 	oro += oro_ganado
@@ -72,7 +79,7 @@ func change_mode(new_mode: Level.Mode):
 
 func empezar_ola():
 	ola_actual += 1
-	ola_actual_contenido = olas()[ola_actual].call()
+	ola_actual_contenido = olas()[ola_actual - 1].call()
 	enemigos_por_spawnear = calcular_enemigos_por_spawnear(ola_actual_contenido)
 	proximo_evento = ola_actual_contenido.pop_front()
 	tiempo_desde_ola_empezada = 0.0
@@ -110,6 +117,8 @@ func on_nave_enemiga_exited(nave_enemiga):
 	enemigo_derrotado.emit()
 	if enemigos_por_spawnear == 0 and enemigos_actuales.is_empty():
 		change_mode(Level.Mode.Planning)
+		DialogueManager.show_dialogue_balloon(INTRO_NIVEL, "ganada_ola_%s" % ola_actual)
+		await DialogueManager.dialogue_ended
 		if ola_actual >= cantidad_olas:
 			win()
 
@@ -136,8 +145,41 @@ func seguidilla(segundo_inicial: float, iteraciones: int, cada_segundos: int, ti
 	return array
 
 func olas():
-	return [ola_1, ola_1, ola_1]
+	return [ola_1, ola_2, ola_3]
 
 func ola_1():
 	var camino_1 = $Camino
-	return seguidilla(1, 10, 3, NaveEnemiga.Tipo.Inglesa, camino_1)
+	return seguidilla(1, 10, 3.5, NaveEnemiga.Tipo.Inglesa, camino_1)
+
+func ola_2():
+	var camino_1 = $Camino
+	return seguidilla(1, 12, 2, NaveEnemiga.Tipo.Inglesa, camino_1)
+
+func ola_3():
+	var camino_1 = $Camino
+	return seguidilla(1, 15, 2, NaveEnemiga.Tipo.Inglesa, camino_1) + seguidilla(32, 15, 2, NaveEnemiga.Tipo.Basica, camino_1)
+
+func entrar_asteroides_para_ola_2():
+	$AsteroidesAPartirDeOla2.process_mode = Node.PROCESS_MODE_INHERIT
+	$AsteroidesAPartirDeOla2.visible = true
+	for asteroide in [$AsteroidesAPartirDeOla2/Asteroide3, $AsteroidesAPartirDeOla2/Asteroide6]:
+		var duration = randf_range(1.0, 3.0)
+		create_tween().tween_property(asteroide, "global_position", asteroide.global_position, duration)\
+			.from($LeftBlackHole.global_position).set_trans(Tween.TRANS_QUAD)
+		create_tween().tween_property(asteroide, "scale", Vector2.ONE, duration)\
+			.from(Vector2.ZERO).set_trans(Tween.TRANS_QUAD)
+	for asteroide in [$AsteroidesAPartirDeOla2/Asteroide4, $AsteroidesAPartirDeOla2/Asteroide5]:
+		var duration = randf_range(1.0, 3.0)
+		create_tween().tween_property(asteroide, "global_position", asteroide.global_position, duration)\
+			.from($RightBlackHole.global_position).set_trans(Tween.TRANS_QUAD)
+		create_tween().tween_property(asteroide, "scale", Vector2.ONE, duration)\
+					.from(Vector2.ZERO).set_trans(Tween.TRANS_QUAD)
+	await get_tree().create_timer(3.0).timeout
+
+func habilitar_nueva_torreta_y_cadenas():
+	for button in [
+		$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton,
+		$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton2,
+		$HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton2
+	]:
+		button.visible = true

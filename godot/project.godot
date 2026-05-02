@@ -22,6 +22,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 UserSettings="*res://settings/user_settings.gd"
+DialogueManager="*uid://c3rodes2l3gxb"
+Guion="*uid://vogj2wqpbxel"
 
 [display]
 
@@ -30,6 +32,10 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [gui]
 
@@ -98,6 +104,7 @@ toggle_showing_hint_text={
 [internationalization]
 
 locale/translations=PackedStringArray("res://i18n/translation.de.translation", "res://i18n/translation.en.translation")
+locale/translations_pot_files=PackedStringArray("res://dialogues/intro_nivel.dialogue")
 
 [layer_names]
 
