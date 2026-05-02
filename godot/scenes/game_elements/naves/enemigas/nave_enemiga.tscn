@@ -190,6 +190,7 @@ gradient = SubResource("Gradient_tdx1q")
 
 [node name="NaveEnemiga" type="PathFollow2D" unique_id=1585765628]
 rotates = false
+loop = false
 script = ExtResource("1_i6cco")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=67170694]
@@ -199,6 +200,7 @@ speed_scale = 0.4
 
 [node name="Imagen" type="Node2D" parent="." unique_id=665104279]
 position = Vector2(0, 5)
+scale = Vector2(0.8, 0.8)
 
 [node name="Inglesa" type="Sprite2D" parent="Imagen" unique_id=723503334]
 visible = false

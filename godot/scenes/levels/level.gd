@@ -21,6 +21,9 @@ var health: float = max_health
 @onready var base: Node2D = %Base
 @export var olas: int = 5
 var ola_actual: int = 0
+var ola_actual_contenido = []
+var proximo_evento
+
 @export var caminos: Array[Camino]
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var music: Music = %Music
@@ -31,6 +34,8 @@ var valor_oro_por_enemigo: float
 var valor_costo_por_torre: float
 var valor_venta_torre: float
 var enemigos_por_ola: int = 5
+
+var tiempo_desde_ola_empezada: float = 0.0
 
 var tiempo_entre_enemigos: float = 5.0
 var tiempo_hasta_proximo_enemigo: float = tiempo_entre_enemigos
@@ -73,20 +78,30 @@ func change_mode(new_mode: Level.Mode):
 
 func empezar_ola():
 	ola_actual += 1
+	ola_actual_contenido = ola_1()
+	proximo_evento = ola_actual_contenido.pop_front()
+	tiempo_desde_ola_empezada = 0.0
 	change_mode(Level.Mode.Battling)
 
 func _process(delta: float) -> void:
 	if Level.Mode.Planning == mode:
 		return
-	tiempo_hasta_proximo_enemigo = move_toward(tiempo_hasta_proximo_enemigo, 0, delta)
-	if tiempo_hasta_proximo_enemigo <= 0.0 and enemigos_por_spawnear > 0:
-		var camino = caminos.front()
-		var nave_enemiga = NAVE_ENEMIGA.instantiate()
-		camino.agregar_nave(nave_enemiga)
-		enemigos_actuales.push_back(nave_enemiga)
-		enemigos_por_spawnear -= 1
-		nave_enemiga.tree_exited.connect(func(): on_nave_enemiga_exited(nave_enemiga))
-		tiempo_hasta_proximo_enemigo = tiempo_entre_enemigos
+	tiempo_desde_ola_empezada += delta
+	if not proximo_evento:
+		return
+	var tiempo_proximo_evento = proximo_evento[0]
+	if tiempo_proximo_evento < tiempo_desde_ola_empezada:
+		var tipos_enemigos = proximo_evento[1]
+		var camino = proximo_evento[2]
+		for tipo_enemigo in tipos_enemigos:
+			var nave_enemiga = NAVE_ENEMIGA.instantiate()
+			nave_enemiga.tipo = tipo_enemigo
+			camino.agregar_nave(nave_enemiga)
+			enemigos_actuales.push_back(nave_enemiga)
+			enemigos_por_spawnear -= 1
+			nave_enemiga.tree_exited.connect(func(): on_nave_enemiga_exited(nave_enemiga))
+		proximo_evento = ola_actual_contenido.pop_front()
+
 
 func on_nave_enemiga_exited(nave_enemiga):
 	enemigos_actuales.erase(nave_enemiga)
@@ -105,3 +120,21 @@ func win():
 func lose():
 	game_over_message.lose()
 	get_tree().paused = true
+
+func varias(n, tipo):
+	var array = []
+	for i in range(n):
+		array.append(tipo)
+	return array
+
+func seguidilla(segundo_inicial, iteraciones, cada_segundos, tipo, camino):
+	var tiempo = segundo_inicial
+	var array = []
+	for i in range(iteraciones):
+		array.append([tiempo, [tipo], camino])
+		tiempo += cada_segundos
+	return array
+
+func ola_1():
+	var camino_1 = $Camino
+	return seguidilla(1, 10, 3, NaveEnemiga.Tipo.Inglesa, camino_1)

@@ -17,7 +17,8 @@ var cadenas: Array = []
 var danio: float = 20
 
 func _ready() -> void:
-	tipo = [Tipo.Inglesa, Tipo.Basica, Tipo.Francesa, Tipo.Rapida].pick_random()
+	h_offset = randf_range(-25, 75)
+	v_offset = randf_range(-50, 50)
 	match tipo:
 		Tipo.Inglesa:
 			$Imagen/Inglesa.visible = true
