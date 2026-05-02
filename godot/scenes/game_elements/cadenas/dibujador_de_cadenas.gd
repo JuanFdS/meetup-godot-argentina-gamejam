@@ -38,24 +38,7 @@ func exit_state():
 				get_parent().torreta_desplegada(unidad_actual)
 				line.modulate = Color.WHITE
 				_asteroide_bajo_el_cursor().agregar_torreta(torreta_2)
-				laser_sprite.desplegar()
-				if laser_sprite is LaserSprite:
-					var line_area := Area2D.new()
-					var collision_shape := CollisionShape2D.new()
-					line_area.add_child(collision_shape)
-					var area_shape := RectangleShape2D.new()
-					collision_shape.shape = area_shape
-					var first_point := line.get_point_position(0)
-					var last_point := line.get_point_position(1)
-					var area_length := first_point.distance_to(last_point)
-					var area_width := line.width
-					line.add_child(line_area)
-					line_area.position = (first_point + last_point) / 2.0
-					line_area.rotation = first_point.direction_to(last_point).angle()
-					line_area.collision_mask = 0
-					line_area.collision_layer = 0
-					line_area.set_collision_layer_value(4, true)
-					area_shape.size = Vector2(area_length, area_width)
+				laser_sprite.desplegar(line)
 			else:
 				line.queue_free()
 				torreta_1.queue_free()

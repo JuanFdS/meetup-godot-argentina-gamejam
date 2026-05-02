@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://ccphtijvklfkj" path="res://scenes/game_elements/torretas/laser_progresivo.tscn" id="17_fqbio"]
 [ext_resource type="PackedScene" uid="uid://ctpf2mugoxspq" path="res://scenes/game_elements/cadenas/cadenas_minas.tscn" id="19_r0bn1"]
 [ext_resource type="Script" uid="uid://t34xaqpcgbnn" path="res://scenes/levels/test_level/gorro_frigio.gd" id="22_awduv"]
+[ext_resource type="PackedScene" uid="uid://178mciy418ce" path="res://scenes/game_elements/cadenas/cadenas_ventilador.tscn" id="22_cb3jl"]
 [ext_resource type="Texture2D" uid="uid://bm8notya2lij" path="res://assets/images/puntero/Puntero_PlaceHolder_Gorro_WhiteLine.png" id="22_ppy3a"]
 
 [sub_resource type="Gradient" id="Gradient_lln15"]
@@ -946,6 +947,7 @@ vertical_alignment = 2
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
+scene = ExtResource("22_cb3jl")
 description = "[color=light_green]Efecto realentizador[/color]
 [color=pink]No hace daño[/color]"
 

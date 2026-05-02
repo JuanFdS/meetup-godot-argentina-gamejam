@@ -14,7 +14,7 @@ const MINA_INDIVIDUAL = preload("uid://cg8hxsxc8cq0m")
 			mina.visible = i < cantidad_minas
 			mina.position.x = ((i + 0.5) * diametro_mina) - width / 2
 
-func desplegar():
+func desplegar(line: Line2D):
 	for child in get_children():
 		if child.visible:
 			var mina = MINA_INDIVIDUAL.instantiate()

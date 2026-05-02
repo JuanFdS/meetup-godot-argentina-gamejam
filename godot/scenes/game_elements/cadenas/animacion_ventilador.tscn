@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://nubr07hsn71m"]
+
+[ext_resource type="Texture2D" uid="uid://drjcjhv6fd5o0" path="res://assets/images/cadenas/Boomerang.png" id="1_lut0r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1rc0"]
+atlas = ExtResource("1_lut0r")
+region = Rect2(0, 0, 114, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6pd2"]
+atlas = ExtResource("1_lut0r")
+region = Rect2(114, 0, 114, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohurw"]
+atlas = ExtResource("1_lut0r")
+region = Rect2(228, 0, 114, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftwjy"]
+atlas = ExtResource("1_lut0r")
+region = Rect2(342, 0, 114, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw3um"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1rc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6pd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohurw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftwjy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="AnimacionVentilador" type="AnimatedSprite2D" unique_id=71178325]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_dw3um")
+autoplay = "default"
+frame_progress = 0.10860613

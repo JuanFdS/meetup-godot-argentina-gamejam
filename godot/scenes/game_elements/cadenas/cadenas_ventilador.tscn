@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://178mciy418ce"]
+
+[ext_resource type="Script" uid="uid://cj7sog3fky48c" path="res://scenes/game_elements/cadenas/cadenas_ventilador.gd" id="1_ep63j"]
+[ext_resource type="PackedScene" uid="uid://nubr07hsn71m" path="res://scenes/game_elements/cadenas/animacion_ventilador.tscn" id="2_rx6hq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sf55r"]
+
+[node name="CadenasVentilador" type="Sprite2D" unique_id=257009757 groups=["laser"]]
+material = SubResource("ShaderMaterial_sf55r")
+script = ExtResource("1_ep63j")
+width = 200.0
+
+[node name="AnimacionVentilador" parent="." unique_id=71178325 instance=ExtResource("2_rx6hq")]
+position = Vector2(-75, 0)
+
+[node name="AnimacionVentilador2" parent="." unique_id=89659723 instance=ExtResource("2_rx6hq")]
+position = Vector2(-25, 0)
+
+[node name="AnimacionVentilador3" parent="." unique_id=1591822761 instance=ExtResource("2_rx6hq")]
+position = Vector2(25, 0)
+
+[node name="AnimacionVentilador4" parent="." unique_id=1501941349 instance=ExtResource("2_rx6hq")]
+position = Vector2(75, 0)
+
+[node name="AnimacionVentilador5" parent="." unique_id=767417056 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(125, 0)
+
+[node name="AnimacionVentilador6" parent="." unique_id=1074049024 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(175, 0)
+
+[node name="AnimacionVentilador7" parent="." unique_id=744418189 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(225, 0)
+
+[node name="AnimacionVentilador8" parent="." unique_id=974924536 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(275, 0)
+
+[node name="AnimacionVentilador9" parent="." unique_id=853230660 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(325, 0)
+
+[node name="AnimacionVentilador10" parent="." unique_id=922294465 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(375, 0)
+
+[node name="AnimacionVentilador11" parent="." unique_id=1634766318 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(425, 0)
+
+[node name="AnimacionVentilador12" parent="." unique_id=1535778695 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(475, 0)
+
+[node name="AnimacionVentilador13" parent="." unique_id=324842745 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(525, 0)
+
+[node name="AnimacionVentilador14" parent="." unique_id=983374931 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(575, 0)
+
+[node name="AnimacionVentilador15" parent="." unique_id=918888000 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(625, 0)
+
+[node name="AnimacionVentilador16" parent="." unique_id=589806543 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(675, 0)
+
+[node name="AnimacionVentilador17" parent="." unique_id=22206526 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(725, 0)
+
+[node name="AnimacionVentilador18" parent="." unique_id=1183555415 instance=ExtResource("2_rx6hq")]
+visible = false
+position = Vector2(775, 0)
