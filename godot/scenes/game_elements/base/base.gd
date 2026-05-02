@@ -9,4 +9,4 @@ func _ready():
 
 func on_enemy_entered(enemy):
 	enemy.hit_base()
-	damaged.emit(20)
+	damaged.emit(enemy.duenio().danio)

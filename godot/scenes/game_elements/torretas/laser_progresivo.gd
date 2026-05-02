@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 		enemy_being_shot = null
 		current_damage_per_second = 0.0
 	elif enemy_being_shot == null:
+		current_damage_per_second = 0.0
 		var candidates = nearby_enemies.map(func(area): return area.get_parent())
 		candidates.sort_custom(func(enemy_a, enemy_b):
 			return enemy_a.health < enemy_b.health

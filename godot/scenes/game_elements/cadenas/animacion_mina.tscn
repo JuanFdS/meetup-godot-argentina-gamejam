@@ -109,6 +109,4 @@ animations = [{
 [node name="AnimacionMina" type="AnimatedSprite2D" unique_id=817358525]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_os5pl")
-animation = &"explode"
-frame = 11
-frame_progress = 1.0
+autoplay = "default"

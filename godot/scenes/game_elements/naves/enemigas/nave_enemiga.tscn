@@ -2,15 +2,18 @@
 
 [ext_resource type="Shader" uid="uid://dovwohg1dj638" path="res://scenes/game_elements/naves/enemigas/nave.gdshader" id="1_fuqs3"]
 [ext_resource type="Script" uid="uid://dw507wy5wcyjb" path="res://scenes/game_elements/naves/enemigas/nave_enemiga.gd" id="1_i6cco"]
-[ext_resource type="Texture2D" uid="uid://b7a2fbfacjcr2" path="res://assets/images/naves/inglaterra.png" id="2_i6cco"]
+[ext_resource type="Texture2D" uid="uid://cf2e1wn46uy4x" path="res://assets/images/naves/Nave-Inglaterra.png" id="3_idoxs"]
 [ext_resource type="Script" uid="uid://c58l5t7x1nf63" path="res://scenes/game_elements/naves/enemigas/enemy_area.gd" id="4_idoxs"]
+[ext_resource type="Texture2D" uid="uid://ce1hmq888vn2t" path="res://assets/images/naves/Nave-Basica.png" id="4_tdx1q"]
+[ext_resource type="Texture2D" uid="uid://0huqrjpx67vo" path="res://assets/images/naves/Barco-frances.png" id="5_4fnpx"]
+[ext_resource type="Texture2D" uid="uid://do101avbtcje4" path="res://assets/images/naves/Nave-Rapida.png" id="6_7u2gn"]
 
 [sub_resource type="Animation" id="Animation_rho34"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Imagen/Inglesa:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,14 +29,14 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Imagen:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 10), Vector2(0, -10)]
+"values": [Vector2(0, 5), Vector2(0, -5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rho34"]
@@ -44,7 +47,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rho34"]
 shader = ExtResource("1_fuqs3")
-shader_parameter/thickness = 10.000000475
+shader_parameter/thickness = 3.0000001425
 shader_parameter/ring_count = 16
 shader_parameter/ring_offset = 0.0
 shader_parameter/outline_color = Color(0, 0, 0, 1)
@@ -54,8 +57,122 @@ shader_parameter/square_border = false
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fnpx"]
+atlas = ExtResource("4_tdx1q")
+region = Rect2(0, 0, 134, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u2gn"]
+atlas = ExtResource("4_tdx1q")
+region = Rect2(134, 0, 134, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omu26"]
+atlas = ExtResource("4_tdx1q")
+region = Rect2(268, 0, 134, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou6c3"]
+atlas = ExtResource("4_tdx1q")
+region = Rect2(402, 0, 134, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idoxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fnpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u2gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omu26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou6c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omu26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u2gn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4u3v"]
+atlas = ExtResource("5_4fnpx")
+region = Rect2(0, 0, 226, 272)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ldff"]
+atlas = ExtResource("5_4fnpx")
+region = Rect2(226, 0, 226, 272)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3xw8"]
+atlas = ExtResource("5_4fnpx")
+region = Rect2(452, 0, 226, 272)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2oes"]
+atlas = ExtResource("5_4fnpx")
+region = Rect2(678, 0, 226, 272)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ckyg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4u3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ldff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3xw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2oes")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_576ft"]
+atlas = ExtResource("6_7u2gn")
+region = Rect2(0, 0, 147, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36lsh"]
+atlas = ExtResource("6_7u2gn")
+region = Rect2(151, 0, 147, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_744se"]
+atlas = ExtResource("6_7u2gn")
+region = Rect2(302, 0, 147, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsafh"]
+atlas = ExtResource("6_7u2gn")
+region = Rect2(453, 0, 147, 124)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_576ft"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_576ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36lsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_744se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsafh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6cco"]
-radius = 25.079872
+radius = 33.0
 
 [sub_resource type="Gradient" id="Gradient_idoxs"]
 offsets = PackedFloat32Array(1)
@@ -80,10 +197,39 @@ libraries/ = SubResource("AnimationLibrary_rho34")
 autoplay = &"hover"
 speed_scale = 0.4
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=723503334]
+[node name="Imagen" type="Node2D" parent="." unique_id=665104279]
+position = Vector2(0, 5)
+
+[node name="Inglesa" type="Sprite2D" parent="Imagen" unique_id=723503334]
+visible = false
 material = SubResource("ShaderMaterial_rho34")
-scale = Vector2(0.18075807, 0.18075803)
-texture = ExtResource("2_i6cco")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_idoxs")
+
+[node name="Basica" type="AnimatedSprite2D" parent="Imagen" unique_id=1140268758]
+visible = false
+material = SubResource("ShaderMaterial_rho34")
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_idoxs")
+autoplay = "default"
+frame_progress = 0.92824304
+
+[node name="Francesa" type="AnimatedSprite2D" parent="Imagen" unique_id=2138872469]
+visible = false
+material = SubResource("ShaderMaterial_rho34")
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8ckyg")
+autoplay = "default"
+frame_progress = 0.024678739
+
+[node name="Rapida" type="AnimatedSprite2D" parent="Imagen" unique_id=210331907]
+visible = false
+material = SubResource("ShaderMaterial_rho34")
+position = Vector2(-7, -9)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_576ft")
+autoplay = "default"
+frame_progress = 0.72588646
 
 [node name="Area2D" type="Area2D" parent="." unique_id=513073188]
 collision_layer = 2
@@ -94,10 +240,10 @@ script = ExtResource("4_idoxs")
 shape = SubResource("CircleShape2D_i6cco")
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1440447301]
-offset_left = -47.0
-offset_top = -49.0
-offset_right = 49.0
-offset_bottom = -37.0
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 18.0
+offset_bottom = -28.0
 step = 0.1
 value = 50.0
 nine_patch_stretch = true

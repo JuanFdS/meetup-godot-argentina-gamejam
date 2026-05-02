@@ -1,15 +1,48 @@
+class_name NaveEnemiga
 extends PathFollow2D
 @onready var area_2d: Area2D = $Area2D
+
+enum Tipo {
+	Inglesa,
+	Basica,
+	Francesa,
+	Rapida
+}
+
+var tipo = Tipo.Inglesa
 
 @export var velocidad: float = 150.0
 var health: float = 25.0
 var cadenas: Array = []
+var danio: float = 20
 
 func _ready() -> void:
+	tipo = [Tipo.Inglesa, Tipo.Basica, Tipo.Francesa, Tipo.Rapida].pick_random()
+	match tipo:
+		Tipo.Inglesa:
+			$Imagen/Inglesa.visible = true
+			health = 25
+			velocidad = 100
+			danio = 20
+		Tipo.Basica:
+			$Imagen/Basica.visible = true
+			health = 37.5
+			velocidad = 100
+			danio = 30
+		Tipo.Francesa:
+			$Imagen/Francesa.visible = true
+			health = 62.5
+			velocidad = 70
+			danio = 40
+		Tipo.Rapida:
+			$Imagen/Rapida.visible = true
+			health = 17.5
+			velocidad = 200
+			danio = 10
 	area_2d.area_entered.connect(on_cadena_enemiga_entered)
 	area_2d.area_exited.connect(on_cadena_enemiga_exited)
 	$HealthBar.max_value = health
-	
+	$HealthBar.visible = false
 
 func on_cadena_enemiga_entered(cadena):
 	cadenas.push_back(cadena)
@@ -30,14 +63,15 @@ func damaged_by_laser(danio):
 	reducir_salud(danio)
 
 func hit_by_disparo(disparo):
-	create_tween().tween_property($Sprite2D, "modulate", Color.WHITE, 0.3).from(Color.RED)
+	create_tween().tween_property($Imagen, "modulate", Color.WHITE, 0.3).from(Color.RED)
 	reducir_salud(disparo.danio)
 
 func hit_by_explosion(danio):
-	create_tween().tween_property($Sprite2D, "modulate", Color.WHITE, 0.3).from(Color.RED)
+	create_tween().tween_property($Imagen, "modulate", Color.WHITE, 0.3).from(Color.RED)
 	reducir_salud(danio)
 
 func reducir_salud(danio):
+	$HealthBar.visible = true
 	health -= danio
 	if health <= 0.0:
 		queue_free()
