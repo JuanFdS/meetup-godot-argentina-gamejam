@@ -9,7 +9,7 @@ extends Node2D
 const STAR = preload("uid://chqxhafpwtmgq")
 var stars: Dictionary[float, Star] = {}
 
-func _ready() -> void:
+func start() -> void:
 	for i in range(0, amount):
 		var offset_ratio = randf()
 		var star = build_star(offset_ratio)

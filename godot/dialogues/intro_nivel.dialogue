@@ -21,4 +21,6 @@ Rosas, el Restaurado: O incluso, recuperar el oro gastado destruyendo una torret
 Rosas, el Restaurado: Por ahora todo marcha bien, pero no se confíe.
 Rosas, el Restaurado: A partir de ahora tiene a su disposición un nuevo tipo de torreta y 2 nuevos tipos de cadenas.
 do Guion.habilitar_nueva_torreta_y_cadenas()
+Rosas, el Restaurado: Los enemigos descubrieron un nuevo paso a través de los asteroides. Desde ahora tendrá que defender desde dos frentes.
+do Guion.habilitar_segundo_camino()
 => END

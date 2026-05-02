@@ -3,6 +3,9 @@ extends Node2D
 
 @export var path: Path2D
 
+func start():
+	$StarPath.start()
+
 func _ready():
 	if not path and has_node("Path2D"):
 		path = get_node("Path2D")

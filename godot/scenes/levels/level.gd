@@ -45,11 +45,14 @@ var enemigos_restantes :
 func _ready():
 	$AsteroidesAPartirDeOla2.visible = false
 	$AsteroidesAPartirDeOla2.process_mode = Node.PROCESS_MODE_DISABLED
+	$AsteroidesAPartirDeOla4.visible = false
+	$AsteroidesAPartirDeOla4.process_mode = Node.PROCESS_MODE_DISABLED
 	%DibujadorDeCadenas.visible = false
 	base.damaged.connect(on_base_damaged)
 	music.play(mode)
 	DialogueManager.show_dialogue_balloon(INTRO_NIVEL)
 	await DialogueManager.dialogue_ended
+	$Camino.start()
 	%DibujadorDeCadenas.visible = true
 
 func nave_derrotada(oro_ganado):
@@ -145,7 +148,7 @@ func seguidilla(segundo_inicial: float, iteraciones: int, cada_segundos: int, ti
 	return array
 
 func olas():
-	return [ola_1, ola_2, ola_3]
+	return [ola_1, ola_2, ola_3, ola_4]
 
 func ola_1():
 	var camino_1 = $Camino
@@ -159,16 +162,35 @@ func ola_3():
 	var camino_1 = $Camino
 	return seguidilla(1, 15, 2, NaveEnemiga.Tipo.Inglesa, camino_1) + seguidilla(32, 15, 2, NaveEnemiga.Tipo.Basica, camino_1)
 
+func ola_4():
+	var camino_1 = $Camino
+	return seguidilla(1, 15, 2, NaveEnemiga.Tipo.Inglesa, camino_1) + seguidilla(32, 15, 2, NaveEnemiga.Tipo.Basica, camino_1)
+
+func habilitar_segundo_camino():
+	$Camino2.start()
+	entrar_asteroides(
+		$AsteroidesAPartirDeOla4,
+		[$AsteroidesAPartirDeOla4/Asteroide5],
+		[$AsteroidesAPartirDeOla4/Asteroide3, $AsteroidesAPartirDeOla4/Asteroide6, $AsteroidesAPartirDeOla4/Asteroide4]
+	)
+	
+
 func entrar_asteroides_para_ola_2():
-	$AsteroidesAPartirDeOla2.process_mode = Node.PROCESS_MODE_INHERIT
-	$AsteroidesAPartirDeOla2.visible = true
-	for asteroide in [$AsteroidesAPartirDeOla2/Asteroide3, $AsteroidesAPartirDeOla2/Asteroide6]:
+	entrar_asteroides(
+		$AsteroidesAPartirDeOla2,
+		[$AsteroidesAPartirDeOla2/Asteroide3, $AsteroidesAPartirDeOla2/Asteroide6],
+		[$AsteroidesAPartirDeOla2/Asteroide4, $AsteroidesAPartirDeOla2/Asteroide5])
+	
+func entrar_asteroides(contenedor, asteroides_izq, asteroides_der):
+	contenedor.process_mode = Node.PROCESS_MODE_INHERIT
+	contenedor.visible = true
+	for asteroide in asteroides_izq:
 		var duration = randf_range(1.0, 3.0)
 		create_tween().tween_property(asteroide, "global_position", asteroide.global_position, duration)\
 			.from($LeftBlackHole.global_position).set_trans(Tween.TRANS_QUAD)
 		create_tween().tween_property(asteroide, "scale", Vector2.ONE, duration)\
 			.from(Vector2.ZERO).set_trans(Tween.TRANS_QUAD)
-	for asteroide in [$AsteroidesAPartirDeOla2/Asteroide4, $AsteroidesAPartirDeOla2/Asteroide5]:
+	for asteroide in asteroides_der:
 		var duration = randf_range(1.0, 3.0)
 		create_tween().tween_property(asteroide, "global_position", asteroide.global_position, duration)\
 			.from($RightBlackHole.global_position).set_trans(Tween.TRANS_QUAD)

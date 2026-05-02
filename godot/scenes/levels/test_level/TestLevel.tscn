@@ -62,6 +62,12 @@ _data = {
 }
 point_count = 9
 
+[sub_resource type="Curve2D" id="Curve2D_jpuvf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 990.9313, -108.729515, 0, 0, 0, 0, 992.91077, -46.442627, 0, 0, 0, 0, 971.1362, 32.942627, 0, 0, 0, 0, 947.3822, 111.10657, 0, 0, 0, 0, 926.5974, 174.61478, 0, 0, 0, 0, 931.5462, 235.68036, 0, 0, 0, 0, 909.77167, 290.63937, 0, 0, 0, 0, 836.5301, 349.26233, 0, 0, 0, 0, 772.1962, 413.99182, 0, 0, 0, 0, 705.88293, 433.53284, 0, 0, 0, 0, 674.2109, 471.3935, 0, 0, 0, 0, 621.7541, 533.68036, 0, 0, 0, 0, 587.1128, 564.21313)
+}
+point_count = 13
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5womf"]
 radius = 67.02985
 
@@ -405,6 +411,22 @@ position = Vector2(-6.1923065, 100.02684)
 scale = Vector2(1.010355, 0.8187919)
 curve = SubResource("Curve2D_5womf")
 
+[node name="Camino2" type="Node2D" parent="." unique_id=2102775670]
+script = ExtResource("1_cfq6v")
+
+[node name="StarPath" type="Node2D" parent="Camino2" unique_id=1784572155 node_paths=PackedStringArray("path")]
+script = ExtResource("2_2eagb")
+path = NodePath("../Path2D")
+star_scale = 0.1
+star_scale_random = 0.2
+max_distance_from_path = 30.0
+amount = 200
+
+[node name="Path2D" type="Path2D" parent="Camino2" unique_id=1168848289]
+position = Vector2(-6.1923065, 100.02684)
+scale = Vector2(1.010355, 0.8187919)
+curve = SubResource("Curve2D_jpuvf")
+
 [node name="Base" type="Node2D" parent="." unique_id=722738729]
 unique_name_in_owner = true
 position = Vector2(599, 545)
@@ -577,6 +599,104 @@ asteroide = NodePath("../..")
 scale = Vector2(0.8, 0.8)
 shape = SubResource("ConvexPolygonShape2D_mq7tu")
 
+[node name="AsteroidesAPartirDeOla4" type="Node2D" parent="." unique_id=235163745]
+
+[node name="Asteroide3" type="Node2D" parent="AsteroidesAPartirDeOla4" unique_id=2073121083]
+position = Vector2(842, 136)
+script = ExtResource("3_72f13")
+
+[node name="Sprite2D" type="Sprite2D" parent="AsteroidesAPartirDeOla4/Asteroide3" unique_id=627053280]
+position = Vector2(-3, -8)
+scale = Vector2(0.81333333, 0.81333333)
+texture = ExtResource("10_ecmaq")
+
+[node name="Polygon2D" type="Polygon2D" parent="AsteroidesAPartirDeOla4/Asteroide3" unique_id=89791936]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 0)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="AsteroidesAPartirDeOla4/Asteroide3/Polygon2D" unique_id=639801279 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidesAPartirDeOla4/Asteroide3/Polygon2D/Area2D" unique_id=1451228596]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide6" type="Node2D" parent="AsteroidesAPartirDeOla4" unique_id=191183467]
+position = Vector2(804, 274)
+script = ExtResource("3_72f13")
+
+[node name="Sprite2D" type="Sprite2D" parent="AsteroidesAPartirDeOla4/Asteroide6" unique_id=45435313]
+position = Vector2(-3, -8)
+scale = Vector2(0.81333333, 0.81333333)
+texture = ExtResource("10_ecmaq")
+
+[node name="Polygon2D" type="Polygon2D" parent="AsteroidesAPartirDeOla4/Asteroide6" unique_id=1122337014]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 0)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="AsteroidesAPartirDeOla4/Asteroide6/Polygon2D" unique_id=647609395 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidesAPartirDeOla4/Asteroide6/Polygon2D/Area2D" unique_id=2142412585]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide4" type="Node2D" parent="AsteroidesAPartirDeOla4" unique_id=248875895]
+position = Vector2(853, 517)
+script = ExtResource("3_72f13")
+
+[node name="Sprite2D" type="Sprite2D" parent="AsteroidesAPartirDeOla4/Asteroide4" unique_id=1831827451]
+position = Vector2(-3, -8)
+scale = Vector2(0.81333333, 0.81333333)
+texture = ExtResource("10_ecmaq")
+
+[node name="Polygon2D" type="Polygon2D" parent="AsteroidesAPartirDeOla4/Asteroide4" unique_id=1721017097]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 0)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="AsteroidesAPartirDeOla4/Asteroide4/Polygon2D" unique_id=1925446473 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidesAPartirDeOla4/Asteroide4/Polygon2D/Area2D" unique_id=1240474604]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide5" type="Node2D" parent="AsteroidesAPartirDeOla4" unique_id=111243298]
+position = Vector2(1101, 130)
+script = ExtResource("3_72f13")
+
+[node name="Sprite2D" type="Sprite2D" parent="AsteroidesAPartirDeOla4/Asteroide5" unique_id=1031955448]
+position = Vector2(-3, -8)
+scale = Vector2(0.81333333, 0.81333333)
+texture = ExtResource("10_ecmaq")
+
+[node name="Polygon2D" type="Polygon2D" parent="AsteroidesAPartirDeOla4/Asteroide5" unique_id=981462992]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 0)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="AsteroidesAPartirDeOla4/Asteroide5/Polygon2D" unique_id=975122948 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidesAPartirDeOla4/Asteroide5/Polygon2D/Area2D" unique_id=823009695]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=841667348 node_paths=PackedStringArray("nivel")]
 script = ExtResource("4_tesqw")
 nivel = NodePath("..")
@@ -593,9 +713,9 @@ mouse_filter = 2
 [node name="SelectorDeUnidades" type="PanelContainer" parent="HUD/Control" unique_id=2061706116]
 layout_mode = 0
 offset_left = 961.0
-offset_top = 370.0
+offset_top = 412.0
 offset_right = 1139.0
-offset_bottom = 578.5682
+offset_bottom = 633.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yi6fa")
 script = ExtResource("11_nbsax")
 
@@ -662,7 +782,6 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="TextureButton2" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=2067520554]
-visible = false
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
@@ -711,7 +830,6 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=18043167]
-visible = false
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
@@ -1020,16 +1138,17 @@ texture_progress = SubResource("GradientTexture2D_oe0ub")
 
 [node name="UnidadTooltip" type="RichTextLabel" parent="HUD/Control" unique_id=789997293]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.92753476
-anchor_top = 0.5387285
+anchor_top = 0.5479877
 anchor_right = 0.9952431
-anchor_bottom = 0.54181486
+anchor_bottom = 0.55107415
 offset_left = -118.52008
-offset_top = -63.09604
-offset_right = 0.47991943
-offset_bottom = -0.09603882
+offset_top = -21.096039
+offset_right = 0.47998047
+offset_bottom = 41.90396
 pivot_offset = Vector2(120, 63)
 theme_override_font_sizes/normal_font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_rryp4")
@@ -1105,18 +1224,18 @@ metadata/_edit_lock_ = true
 
 [node name="LeftBlackHole" type="AnimatedSprite2D" parent="." unique_id=689720898]
 modulate = Color(0.7480997, 0.7480997, 0.7480996, 0.7058824)
-position = Vector2(167.66776, 475.7088)
+position = Vector2(88.000015, 521)
 rotation = -1.299832
 scale = Vector2(0.83033943, 0.83033943)
 sprite_frames = SubResource("SpriteFrames_qr8cj")
 autoplay = "default"
-frame_progress = 0.3828145
+frame_progress = 0.7879582
 
 [node name="RightBlackHole" type="AnimatedSprite2D" parent="." unique_id=1228442419]
 modulate = Color(0.6517693, 0.65176934, 0.6517693, 0.72156864)
-position = Vector2(954, 162.00003)
+position = Vector2(1101.0001, 247.00002)
 rotation = 0.32294738
-scale = Vector2(0.5674032, 0.5674032)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_qr8cj")
 autoplay = "default"
 frame_progress = 0.95415366
