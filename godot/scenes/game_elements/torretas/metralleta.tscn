@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dy7nt4npgljw4" path="res://assets/images/torretas/Metralleta.png" id="2_wauao"]
 [ext_resource type="Script" uid="uid://lcff7xjhtsyk" path="res://scenes/game_elements/torretas/picker_area.gd" id="3_e555y"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhggy"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1dbc"]
 atlas = ExtResource("2_wauao")
 region = Rect2(0, 0, 128, 100)
@@ -64,12 +66,15 @@ radius = 47.042534
 script = ExtResource("1_vhggy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=18273853]
+light_mask = 3
+material = SubResource("ShaderMaterial_vhggy")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_tv7qx")
 frame_progress = 0.60833603
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=912400165]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -81,6 +86,7 @@ unique_name_in_owner = true
 position = Vector2(28, -18)
 
 [node name="PickerArea" type="Area2D" parent="." unique_id=626474887]
+visible = false
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("3_e555y")

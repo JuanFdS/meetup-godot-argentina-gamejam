@@ -30,11 +30,7 @@ var proximo_evento
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var music: Music = %Music
 
-var oro: float = 100
-
-var valor_oro_por_enemigo: float
-var valor_costo_por_torre: float
-var valor_venta_torre: float
+var oro: float = 25
 
 var tiempo_desde_ola_empezada: float = 0.0
 
@@ -49,8 +45,8 @@ func _ready():
 	base.damaged.connect(on_base_damaged)
 	music.play(mode)
 
-func nave_derrotada():
-	oro += valor_oro_por_enemigo
+func nave_derrotada(oro_ganado):
+	oro += oro_ganado
 
 func torreta_desplegada(unidad):
 	oro -= unidad.costo_total()

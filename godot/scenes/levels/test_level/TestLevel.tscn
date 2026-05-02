@@ -24,10 +24,8 @@
 [ext_resource type="Script" uid="uid://dot3rs1w5llyv" path="res://scenes/levels/test_level/unidad_button.gd" id="13_rryp4"]
 [ext_resource type="PackedScene" uid="uid://c0pme5p7ode1q" path="res://scenes/game_elements/torretas/metralleta.tscn" id="14_fxj3u"]
 [ext_resource type="PackedScene" uid="uid://3x830hanhcvk" path="res://scenes/game_elements/cadenas/laser_sprite.tscn" id="15_eaj0v"]
-[ext_resource type="Script" uid="uid://gxgjdkxkr38h" path="res://scenes/levels/test_level/debuggg.gd" id="15_ta2wi"]
 [ext_resource type="Texture2D" uid="uid://cwrih18i5461b" path="res://assets/images/hud/selectionPanel/SelectionPanel.png" id="15_yi6fa"]
 [ext_resource type="Shader" uid="uid://hgme7icmo77q" path="res://scenes/game_elements/cadenas/laser.gdshader" id="16_sf55r"]
-[ext_resource type="Script" uid="uid://cm0iyiiligpsi" path="res://scenes/levels/test_level/button.gd" id="16_xvx78"]
 [ext_resource type="PackedScene" uid="uid://ccphtijvklfkj" path="res://scenes/game_elements/torretas/laser_progresivo.tscn" id="17_fqbio"]
 [ext_resource type="PackedScene" uid="uid://ctpf2mugoxspq" path="res://scenes/game_elements/cadenas/cadenas_minas.tscn" id="19_r0bn1"]
 [ext_resource type="Script" uid="uid://t34xaqpcgbnn" path="res://scenes/levels/test_level/gorro_frigio.gd" id="22_awduv"]
@@ -142,6 +140,10 @@ region = Rect2(84, 60, 124, 112)
 atlas = ExtResource("12_qie6o")
 region = Rect2(848, 72, 144, 84)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rryp4"]
+atlas = ExtResource("12_qie6o")
+region = Rect2(1108, 52, 128, 116)
+
 [sub_resource type="LabelSettings" id="LabelSettings_qie6o"]
 line_spacing = -2.0
 font_size = 20
@@ -150,10 +152,6 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbsax"]
 atlas = ExtResource("12_qie6o")
 region = Rect2(348, 60, 108, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rryp4"]
-atlas = ExtResource("12_qie6o")
-region = Rect2(1108, 52, 128, 116)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72f13"]
 bg_color = Color(0.3640713, 0.5877615, 0.8452802, 1)
@@ -313,9 +311,6 @@ _data = {
 &"popup": SubResource("Animation_l0ea6")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_ta2wi"]
-font_size = 15
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mq7tu"]
 shader = ExtResource("16_sf55r")
 shader_parameter/beams = 2
@@ -353,12 +348,12 @@ scale = Vector2(0.99999994, 0.99999994)
 texture = SubResource("GradientTexture2D_nfj1d")
 
 [node name="Label" type="RichTextLabel" parent="DibujadorDeCadenas/Pointer" unique_id=135918675]
-modulate = Color(1, 1, 1, 0.8627451)
+modulate = Color(1, 1, 1, 0.78431374)
 z_index = 1
-offset_left = 30.0
-offset_top = 23.0
-offset_right = 222.0
-offset_bottom = 108.0
+offset_left = -203.0
+offset_top = -90.0
+offset_right = -11.0
+offset_bottom = -5.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_lln15")
 bbcode_enabled = true
 text = "Mantener Click
@@ -697,7 +692,7 @@ horizontal_alignment = 1
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
-cost = 30
+cost = 15
 scene = ExtResource("14_fxj3u")
 description = "[color=light_green]Alta cadencia de fuego[/color]
 [color=pink]Bajo daño por disparo[/color]"
@@ -745,6 +740,7 @@ vertical_alignment = 2
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
+cost = 30
 scene = ExtResource("17_fqbio")
 description = "[color=light_green]Daño continuo que aumenta por segundo[/color]
 [color=pink]Concentra ataque en solo una unidad a la vez[/color]"
@@ -789,6 +785,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=18043167]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
@@ -848,6 +845,54 @@ layout_mode = 2
 text = "Cadena"
 horizontal_alignment = 1
 
+[node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=331089034]
+layout_mode = 2
+texture_normal = ExtResource("15_yi6fa")
+script = ExtResource("13_rryp4")
+cost = 10
+scene = ExtResource("22_cb3jl")
+description = "[color=light_green]Efecto realentizador[/color]
+[color=pink]No hace daño[/color]"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1193705015]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.761906
+offset_top = -13.0
+offset_right = 24.761906
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rryp4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1889786384]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3/MarginContainer" unique_id=1592740273]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
+text = "20"
+label_settings = ExtResource("13_an4kq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="TextureButton" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=105555783]
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
@@ -900,6 +945,7 @@ vertical_alignment = 2
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
+cost = 40
 scene = ExtResource("19_r0bn1")
 description = "[color=light_green]Explosión de alto daño en contacto[/color]
 [color=pink]Tardan en reponerse luego de explotar[/color]"
@@ -934,53 +980,6 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton2/MarginContainer" unique_id=1847620036]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
-text = "20"
-label_settings = ExtResource("13_an4kq")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=331089034]
-layout_mode = 2
-texture_normal = ExtResource("15_yi6fa")
-script = ExtResource("13_rryp4")
-scene = ExtResource("22_cb3jl")
-description = "[color=light_green]Efecto realentizador[/color]
-[color=pink]No hace daño[/color]"
-
-[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1193705015]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.761906
-offset_top = -13.0
-offset_right = 24.761906
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_rryp4")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1889786384]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3/MarginContainer" unique_id=1592740273]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -1145,73 +1144,6 @@ offset_bottom = 765.0001
 theme_override_font_sizes/font_size = 40
 text = "Jugar de nuevo"
 script = ExtResource("11_6d6c0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1898408752]
-visible = false
-offset_left = 911.0
-offset_top = 211.0
-offset_right = 1163.0
-offset_bottom = 339.0
-script = ExtResource("15_ta2wi")
-
-[node name="Label" type="Label" parent="HUD/VBoxContainer" unique_id=603325104]
-layout_mode = 2
-text = "Para debuggear y experimentar"
-label_settings = SubResource("LabelSettings_ta2wi")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=1423840634]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HUD/VBoxContainer/HBoxContainer" unique_id=1845796871]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-text = "Oro x enemigo"
-
-[node name="OroXEnemigo" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer" unique_id=1648645772]
-layout_mode = 2
-max_value = 5000.0
-value = 5.0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=1446488454]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HUD/VBoxContainer/HBoxContainer2" unique_id=1430446928]
-layout_mode = 2
-text = "Costo x torres"
-
-[node name="CostoXTorres" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer2" unique_id=1072381651]
-layout_mode = 2
-max_value = 5000.0
-value = 10.0
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=1221197756]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HUD/VBoxContainer/HBoxContainer4" unique_id=1161560854]
-layout_mode = 2
-text = "Valor venta torre"
-
-[node name="ValorVentaTorre" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer4" unique_id=56339761]
-layout_mode = 2
-max_value = 5000.0
-value = 10.0
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=898760966]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HUD/VBoxContainer/HBoxContainer3" unique_id=927051025]
-layout_mode = 2
-text = "Oro inicial"
-
-[node name="OroInicial" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer3" unique_id=50015053]
-layout_mode = 2
-max_value = 5000.0
-value = 100.0
-
-[node name="Button" type="Button" parent="HUD/VBoxContainer" unique_id=1510692608]
-layout_mode = 2
-text = "Reiniciar juego"
-script = ExtResource("16_xvx78")
 
 [node name="Music" parent="." unique_id=1600911506 instance=ExtResource("12_w0124")]
 unique_name_in_owner = true
