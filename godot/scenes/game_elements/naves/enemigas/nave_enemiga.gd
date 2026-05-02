@@ -26,25 +26,25 @@ func _ready() -> void:
 		Tipo.Inglesa:
 			$Imagen/Inglesa.visible = true
 			health = 25
-			velocidad = 100
+			velocidad = 70
 			danio = 20
 			oro = 3
 		Tipo.Basica:
 			$Imagen/Basica.visible = true
 			health = 37.5
-			velocidad = 100
+			velocidad = 70
 			danio = 30
 			oro = 5
 		Tipo.Francesa:
 			$Imagen/Francesa.visible = true
 			health = 62.5
-			velocidad = 70
+			velocidad = 50
 			danio = 40
 			oro = 7
 		Tipo.Rapida:
 			$Imagen/Rapida.visible = true
 			health = 17.5
-			velocidad = 200
+			velocidad = 150
 			danio = 10
 			oro = 4
 	area_2d.area_entered.connect(on_cadena_enemiga_entered)

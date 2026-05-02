@@ -14,7 +14,9 @@ func _process(delta: float) -> void:
 	time_until_next_disparo = move_toward(time_until_next_disparo, 0.0, delta)
 	shooting = not nearby_enemies.is_empty()
 	if shooting:
-		nearby_enemies.sort_custom(func(enemy_a, enemy_b): return enemy_a.global_position.distance_to(global_position) > enemy_b.global_position.distance_to(global_position))
+		nearby_enemies.sort_custom(func(enemy_a, enemy_b):
+			return enemy_a.global_position.distance_to(global_position) > enemy_b.global_position.distance_to(global_position)
+		)
 		var closest_enemy = nearby_enemies.front()
 		$AnimatedSprite2D.flip_h = closest_enemy.global_position.x > global_position.x
 		if time_until_next_disparo <= 0.0:

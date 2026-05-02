@@ -1,10 +1,10 @@
 extends Node2D
 
 @export var path: Path2D
-@export_range(0.1, 1.0, 0.1) var star_scale: float
-@export_range(0.1, 1.0, 0.1) var star_scale_random: float
+@export_range(0.1, 1.0, 0.01) var star_scale: float
+@export_range(0.1, 1.0, 0.01) var star_scale_random: float
 @export_range(0.0, 100.0, 1.0, "suffix:px") var max_distance_from_path: float = 10.0
-@export_range(0, 100, 1, "suffix:stars") var amount: int = 100
+@export_range(0, 500, 1, "suffix:stars") var amount: int = 100
 
 const STAR = preload("uid://chqxhafpwtmgq")
 var stars: Dictionary[float, Star] = {}
@@ -36,6 +36,6 @@ func build_star(offset_ratio: float) -> Star:
 	var star_direction := star_position_with_direction.x
 	sprite.rotation = randf_range(0, PI * 2)
 	sprite.modulate.a = randf_range(0.2, 0.6)
-	sprite.scale = Vector2.ONE * (star_scale + randf_range(-star_scale_random, star_scale_random))
+	sprite.scale = Vector2.ONE * max(0.02, (star_scale + randf_range(-star_scale_random, star_scale_random)))
 	sprite.position = star_position + randf_range(-max_distance_from_path, max_distance_from_path) * star_direction.rotated(PI/2)
 	return sprite
