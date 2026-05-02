@@ -18,6 +18,7 @@ var mode: Level.Mode = Mode.Planning
 var max_health: float = 100.0
 var health: float = max_health
 @onready var game_over_message: Control = %GameOverMessage
+@onready var selector_de_unidades: PanelContainer = %SelectorDeUnidades
 
 @onready var base: Node2D = %Base
 var cantidad_olas: int :
@@ -51,8 +52,10 @@ func _ready():
 	base.damaged.connect(on_base_damaged)
 	music.play(mode)
 	DialogueManager.show_dialogue_balloon(INTRO_NIVEL)
+	selector_de_unidades.visible = false
 	await DialogueManager.dialogue_ended
 	await get_tree().create_timer(1.0).timeout
+	selector_de_unidades.visible = true
 	$Camino.start()
 	%DibujadorDeCadenas.visible = true
 	#prender_todo()
@@ -123,9 +126,13 @@ func on_nave_enemiga_exited(nave_enemiga):
 	enemigo_derrotado.emit()
 	if enemigos_por_spawnear == 0 and enemigos_actuales.is_empty():
 		change_mode(Level.Mode.Planning)
-		DialogueManager.show_dialogue_balloon(INTRO_NIVEL, "ganada_ola_%s" % ola_actual)
-		await DialogueManager.dialogue_ended
+		if health > 0:
+			DialogueManager.show_dialogue_balloon(INTRO_NIVEL, "ganada_ola_%s" % ola_actual)
+			selector_de_unidades.visible = false
+			await DialogueManager.dialogue_ended
+			selector_de_unidades.visible = true
 		health = min(max_health, health + 50)
+		health_changed.emit(health, max_health)
 		if ola_actual >= cantidad_olas:
 			win()
 
@@ -156,7 +163,7 @@ func olas():
 
 func ola_1():
 	var camino_1 = $Camino
-	return seguidilla(1, 9, 3.5, NaveEnemiga.Tipo.Inglesa, camino_1)
+	return seguidilla(1, 5, 3.5, NaveEnemiga.Tipo.Inglesa, camino_1)
 
 func ola_2():
 	var camino_1 = $Camino

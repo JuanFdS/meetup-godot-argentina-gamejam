@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://t34xaqpcgbnn" path="res://scenes/levels/test_level/gorro_frigio.gd" id="22_awduv"]
 [ext_resource type="PackedScene" uid="uid://178mciy418ce" path="res://scenes/game_elements/cadenas/cadenas_ventilador.tscn" id="22_cb3jl"]
 [ext_resource type="Texture2D" uid="uid://bm8notya2lij" path="res://assets/images/puntero/Puntero_PlaceHolder_Gorro_WhiteLine.png" id="22_ppy3a"]
+[ext_resource type="LabelSettings" uid="uid://657jpu7n4e6o" path="res://label_settings.tres" id="24_cb3jl"]
 [ext_resource type="Script" uid="uid://bjvc3ylrjcyrr" path="res://scenes/levels/test_level/animated_sprite_2d_2.gd" id="32_cb3jl"]
 [ext_resource type="Texture2D" uid="uid://ce5lpgmeg1xd3" path="res://assets/images/fondo/blackhole(1).png" id="32_jpuvf"]
 
@@ -122,6 +123,13 @@ expand_margin_top = 15.0
 expand_margin_right = 15.0
 expand_margin_bottom = 15.0
 
+[sub_resource type="SystemFont" id="SystemFont_cb3jl"]
+font_names = PackedStringArray("Monospace")
+font_weight = 800
+
+[sub_resource type="LabelSettings" id="LabelSettings_yq5v4"]
+font = SubResource("SystemFont_cb3jl")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_awduv"]
 atlas = ExtResource("12_qie6o")
 region = Rect2(576, 76, 160, 84)
@@ -152,20 +160,14 @@ atlas = ExtResource("12_qie6o")
 region = Rect2(348, 60, 108, 108)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72f13"]
-bg_color = Color(0.3640713, 0.5877615, 0.8452802, 1)
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_tesqw"]
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-thickness = 8
-vertical = true
+bg_color = Color(0, 0, 0, 0.39215687)
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tesqw"]
 content_margin_left = 4.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 15.0
 content_margin_bottom = 4.0
 bg_color = Color(1, 0.03137255, 0, 0.64705884)
 corner_detail = 5
@@ -173,7 +175,7 @@ corner_detail = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrrqm"]
 content_margin_left = 4.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 15.0
 content_margin_bottom = 4.0
 bg_color = Color(0, 0, 0, 0.6)
 corner_detail = 5
@@ -181,7 +183,7 @@ corner_detail = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vtac"]
 content_margin_left = 4.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 15.0
 content_margin_bottom = 4.0
 bg_color = Color(0, 0, 0, 0.831373)
 corner_detail = 5
@@ -189,7 +191,7 @@ corner_detail = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe0ub"]
 content_margin_left = 4.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 15.0
 content_margin_bottom = 4.0
 bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 corner_detail = 5
@@ -197,7 +199,7 @@ corner_detail = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvj7e"]
 content_margin_left = 4.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 15.0
 content_margin_bottom = 4.0
 bg_color = Color(0.262745, 0.521569, 0.709804, 1)
 draw_center = false
@@ -212,13 +214,16 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tesqw"]
-content_margin_left = 5.0
-content_margin_right = 5.0
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tesqw"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+color = Color(1, 1, 1, 1)
+thickness = 3
+vertical = true
 
-[sub_resource type="LabelSettings" id="LabelSettings_72f13"]
-font = ExtResource("5_rrrqm")
-font_size = 30
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tesqw"]
+content_margin_left = 20.0
+content_margin_right = 20.0
 
 [sub_resource type="Gradient" id="Gradient_tesqw"]
 offsets = PackedFloat32Array(1)
@@ -454,7 +459,7 @@ max_shake_intensity = 50.0
 shake_attenuation = 60.0
 
 [node name="Asteroide" type="Node2D" parent="." unique_id=728750948]
-position = Vector2(330, 318)
+position = Vector2(262, 388)
 script = ExtResource("3_72f13")
 
 [node name="Sprite2D" type="Sprite2D" parent="Asteroide" unique_id=18179819]
@@ -478,7 +483,7 @@ scale = Vector2(0.8, 0.8)
 shape = SubResource("ConvexPolygonShape2D_mq7tu")
 
 [node name="Asteroide8" type="Node2D" parent="." unique_id=1531942419]
-position = Vector2(543, 223)
+position = Vector2(566, 202)
 script = ExtResource("3_72f13")
 
 [node name="Sprite2D" type="Sprite2D" parent="Asteroide8" unique_id=1899798151]
@@ -711,6 +716,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SelectorDeUnidades" type="PanelContainer" parent="HUD/Control" unique_id=2061706116]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 961.0
 offset_top = 412.0
@@ -731,6 +737,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=1671011161]
 layout_mode = 2
 text = "Torreta"
+label_settings = SubResource("LabelSettings_yq5v4")
 horizontal_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=1870339498]
@@ -890,6 +897,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=971567003]
 layout_mode = 2
 text = "Cadena"
+label_settings = SubResource("LabelSettings_yq5v4")
 horizontal_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=105555783]
@@ -1040,6 +1048,7 @@ vertical_alignment = 2
 
 [node name="CostoTotalLabel" type="RichTextLabel" parent="HUD/Control/SelectorDeUnidades/VBoxContainer" unique_id=785076270]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_rrrqm")
 bbcode_enabled = true
 text = "Costo total: "
 fit_content = true
@@ -1060,17 +1069,13 @@ script = ExtResource("9_lln15")
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=1821472300]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_tesqw")
-
 [node name="StartWaveButton" type="Button" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=1049365203]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("5_rrrqm")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_tesqw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rrrqm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3vtac")
@@ -1088,7 +1093,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tesqw")
 text = "Ola: 10 / 10"
-label_settings = SubResource("LabelSettings_72f13")
+label_settings = ExtResource("24_cb3jl")
 vertical_alignment = 1
 
 [node name="VSeparator2" type="VSeparator" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=1306252417]
@@ -1101,7 +1106,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tesqw")
 text = "Enemigos: 000"
-label_settings = SubResource("LabelSettings_72f13")
+label_settings = ExtResource("24_cb3jl")
 vertical_alignment = 1
 
 [node name="VSeparator5" type="VSeparator" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=863982936]
@@ -1114,7 +1119,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tesqw")
 text = "Oro: 00"
-label_settings = SubResource("LabelSettings_72f13")
+label_settings = ExtResource("24_cb3jl")
 vertical_alignment = 1
 
 [node name="VSeparator4" type="VSeparator" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=993711166]
@@ -1126,7 +1131,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tesqw")
 text = "Salud: "
-label_settings = SubResource("LabelSettings_72f13")
+label_settings = ExtResource("24_cb3jl")
 vertical_alignment = 1
 
 [node name="HealthBar" type="TextureProgressBar" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=466999575]

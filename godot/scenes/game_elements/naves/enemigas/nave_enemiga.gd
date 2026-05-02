@@ -29,7 +29,7 @@ func _ready() -> void:
 			health = 25
 			velocidad = 70
 			danio = 20
-			oro = 3
+			oro = 9
 		Tipo.Basica:
 			$Imagen/Basica.visible = true
 			health = 37.5

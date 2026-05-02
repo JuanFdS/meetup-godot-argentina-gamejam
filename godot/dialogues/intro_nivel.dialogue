@@ -29,10 +29,12 @@ do Guion.habilitar_segundo_camino()
 
 ~ ganada_ola_4
 Rosas, el Restaurado: Lo lograste, defendiste la soberanía argentina.
+=> END
 
 ~ ganada_ola_5
 Rosas, el Restaurado: Bien hecho soldado, pero la guerra aun no ha terminado.
 Rosas, el Restaurado: Todavía les queda su nave más poderosa.
+=> END
 
 ~ ganada_ola_6
 Rosas, el Restaurado: Lo lograste, defendiste la soberanía argentina.

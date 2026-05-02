@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="SystemFont" uid="uid://df3vua8i23tow" path="res://assets/fonts/hud_default_font.tres" id="2_kmygl"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="SystemFont" uid="uid://qbbpipnqwn6e" path="res://assets/fonts/hud_default_font_bold.tres" id="3_r5ei8"]
 [ext_resource type="Texture2D" uid="uid://ddxor657brmt4" path="res://assets/images/rosas/cyborg_cuerpo.png" id="4_nlsx6"]
 [ext_resource type="Texture2D" uid="uid://3hyfsq4koita" path="res://assets/images/rosas/rosas2.png" id="5_1337t"]
 
@@ -195,6 +197,8 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("2_kmygl")
+theme_override_fonts/bold_font = ExtResource("3_r5ei8")
 bbcode_enabled = true
 text = "[color=cyan][b]Character[/b][/color]"
 fit_content = true
@@ -204,6 +208,8 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_kmygl")
+theme_override_fonts/bold_font = ExtResource("2_kmygl")
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1162966119]

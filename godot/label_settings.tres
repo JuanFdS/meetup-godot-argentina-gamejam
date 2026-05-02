@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://657jpu7n4e6o"]
+
+[ext_resource type="SystemFont" uid="uid://df3vua8i23tow" path="res://assets/fonts/hud_default_font.tres" id="1_8aso4"]
+
+[resource]
+font = ExtResource("1_8aso4")
+font_size = 24
