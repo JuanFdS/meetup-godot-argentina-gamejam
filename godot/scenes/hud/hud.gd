@@ -34,7 +34,7 @@ func on_enemigo_derrotado():
 	actualizar_texto_olas()
 
 func actualizar_texto_olas():
-	label_ola.text = "%s: %2d / %2d" % [tr("Ola"), nivel.ola_actual, nivel.olas]
+	label_ola.text = "%s: %2d / %2d" % [tr("Ola"), nivel.ola_actual, nivel.cantidad_olas]
 	label_enemigos.text = "%s: %3d" % [tr("Enemigos"), nivel.enemigos_restantes]
 
 func _process(delta: float) -> void:

@@ -1,6 +1,6 @@
 extends Node2D
 @onready var area_2d: Area2D = $Area2D
-@export var danio: float = 0.4
+var danio: float = 0.4 # se lo setea la metralleta igual
 @export var velocidad: float = 750.0
 var direction: Vector2
 

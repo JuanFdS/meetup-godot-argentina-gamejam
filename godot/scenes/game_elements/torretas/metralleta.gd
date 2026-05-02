@@ -5,6 +5,7 @@ const DISPARO = preload("uid://ddqsjy7kd6id7")
 @export var fire_rate: float = 5.0
 @onready var disparo_spawn_point: Marker2D = %DisparoSpawnPoint
 var shooting: bool = false
+var danio: float = 1.0
 
 var time_between_disparos: float = 1.0 / fire_rate
 var time_until_next_disparo: float = 0.0
@@ -25,6 +26,7 @@ func _process(delta: float) -> void:
 func disparar(enemy):
 	time_until_next_disparo = time_between_disparos
 	var disparo = DISPARO.instantiate()
+	disparo.danio = danio
 	var spawn_position = Vector2()
 	spawn_position.y = disparo_spawn_point.global_position.y
 	spawn_position.x = to_global(disparo_spawn_point.position * (1 if $AnimatedSprite2D.flip_h else -1)).x

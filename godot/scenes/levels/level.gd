@@ -19,7 +19,9 @@ var health: float = max_health
 @onready var game_over_message: Control = %GameOverMessage
 
 @onready var base: Node2D = %Base
-@export var olas: int = 5
+var cantidad_olas: int :
+	get():
+		return olas().size()
 var ola_actual: int = 0
 var ola_actual_contenido = []
 var proximo_evento
@@ -33,12 +35,10 @@ var oro: float = 100
 var valor_oro_por_enemigo: float
 var valor_costo_por_torre: float
 var valor_venta_torre: float
-var enemigos_por_ola: int = 5
 
 var tiempo_desde_ola_empezada: float = 0.0
 
 var tiempo_entre_enemigos: float = 5.0
-var tiempo_hasta_proximo_enemigo: float = tiempo_entre_enemigos
 var enemigos_por_spawnear: int = 0
 var enemigos_actuales: Array = []
 var enemigos_restantes :
@@ -69,8 +69,6 @@ func change_mode(new_mode: Level.Mode):
 	mode = new_mode
 	match mode:
 		Level.Mode.Battling:
-			tiempo_hasta_proximo_enemigo = 0
-			enemigos_por_spawnear = enemigos_por_ola
 			ola_comenzada.emit()
 		Level.Mode.Planning:
 			ola_terminada.emit()
@@ -78,10 +76,18 @@ func change_mode(new_mode: Level.Mode):
 
 func empezar_ola():
 	ola_actual += 1
-	ola_actual_contenido = ola_1()
+	ola_actual_contenido = olas()[ola_actual].call()
+	enemigos_por_spawnear = calcular_enemigos_por_spawnear(ola_actual_contenido)
 	proximo_evento = ola_actual_contenido.pop_front()
 	tiempo_desde_ola_empezada = 0.0
 	change_mode(Level.Mode.Battling)
+
+func calcular_enemigos_por_spawnear(una_ola):
+	var total = 0
+	for evento in una_ola:
+		var tipos_de_enemigos = evento[1]
+		total += tipos_de_enemigos.size()
+	return total
 
 func _process(delta: float) -> void:
 	if Level.Mode.Planning == mode:
@@ -107,10 +113,8 @@ func on_nave_enemiga_exited(nave_enemiga):
 	enemigos_actuales.erase(nave_enemiga)
 	enemigo_derrotado.emit()
 	if enemigos_por_spawnear == 0 and enemigos_actuales.is_empty():
-		enemigos_por_ola += 3
-		tiempo_entre_enemigos -= 0.3
 		change_mode(Level.Mode.Planning)
-		if ola_actual >= olas:
+		if ola_actual >= cantidad_olas:
 			win()
 
 func win():
@@ -127,13 +131,16 @@ func varias(n, tipo):
 		array.append(tipo)
 	return array
 
-func seguidilla(segundo_inicial, iteraciones, cada_segundos, tipo, camino):
+func seguidilla(segundo_inicial: float, iteraciones: int, cada_segundos: int, tipo: NaveEnemiga.Tipo, camino: Camino):
 	var tiempo = segundo_inicial
 	var array = []
 	for i in range(iteraciones):
 		array.append([tiempo, [tipo], camino])
 		tiempo += cada_segundos
 	return array
+
+func olas():
+	return [ola_1, ola_1, ola_1]
 
 func ola_1():
 	var camino_1 = $Camino
