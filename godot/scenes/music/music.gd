@@ -21,7 +21,9 @@ func play(mode: Level.Mode):
 			fade_into(0, 1, fade_time_in_seconds)
 	if not level_music.playing:
 		level_music.play()
-	
+
+func play_boss_music():
+	fade_into(1, 2, 1.5)
 
 func fade_into(previous_sync_stream_idx: int, next_sync_stream_idx: int, duration_in_seconds: float):
 	var stream: AudioStreamSynchronized = level_music.stream as AudioStreamSynchronized

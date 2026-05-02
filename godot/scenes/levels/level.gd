@@ -88,6 +88,10 @@ func change_mode(new_mode: Level.Mode):
 
 func empezar_ola():
 	ola_actual += 1
+	if ola_actual == cantidad_olas:
+		get_tree().create_timer(3.0).timeout.connect(func():
+			music.play_boss_music()
+		)
 	ola_actual_contenido = olas()[ola_actual - 1].call()
 	enemigos_por_spawnear = calcular_enemigos_por_spawnear(ola_actual_contenido)
 	proximo_evento = ola_actual_contenido.pop_front()

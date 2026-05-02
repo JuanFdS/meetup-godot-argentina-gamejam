@@ -304,7 +304,8 @@ visible = false
 scale = Vector2(0.35163206, 0.35163206)
 sprite_frames = SubResource("SpriteFrames_36lsh")
 autoplay = "default"
-frame_progress = 0.509609
+frame_progress = 0.31655163
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=513073188]
 collision_layer = 2

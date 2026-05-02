@@ -3,13 +3,16 @@
 [ext_resource type="Script" uid="uid://bydj8q216odyu" path="res://scenes/music/music.gd" id="1_ow1sa"]
 [ext_resource type="AudioStream" uid="uid://b27gd0xc5g3f1" path="res://assets/audio/music/ThinkingSong_CMin_120Bpm.wav" id="2_lkymb"]
 [ext_resource type="AudioStream" uid="uid://bpdr7rk53r0b3" path="res://assets/audio/music/GettingAttackedSong_Full_CMin_120Bpm.wav" id="3_ic36u"]
+[ext_resource type="AudioStream" uid="uid://cqcir4i756wo3" path="res://scenes/boot/Music_BossBattle_128Bpm_Am.wav" id="4_lkymb"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_11iyu"]
-stream_count = 2
+stream_count = 3
 stream_0/stream = ExtResource("2_lkymb")
 stream_0/volume = 0.0
 stream_1/stream = ExtResource("3_ic36u")
 stream_1/volume = 0.0
+stream_2/stream = ExtResource("4_lkymb")
+stream_2/volume = 0.0
 
 [node name="Music" type="Node" unique_id=1600911506]
 script = ExtResource("1_ow1sa")

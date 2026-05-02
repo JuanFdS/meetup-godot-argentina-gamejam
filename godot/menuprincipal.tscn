@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://behdrchdg0dkg"]
+
+[ext_resource type="Texture2D" uid="uid://bkb6cyivqttrj" path="res://assets/images/main_menu/titulo_moneda.png" id="1_js3ya"]
+[ext_resource type="Texture2D" uid="uid://ct8ysmmf7l2lx" path="res://assets/images/fondo/galaxy.png" id="1_ptpru"]
+[ext_resource type="Script" uid="uid://dlaabd0vpfchs" path="res://menuprincipal.gd" id="1_qj36n"]
+[ext_resource type="Texture2D" uid="uid://bkqvhccqc2a1a" path="res://assets/images/main_menu/titulo_cinta.png" id="2_ptpru"]
+[ext_resource type="Texture2D" uid="uid://ogwknjk8atk3" path="res://assets/images/main_menu/titulo_letras.png" id="3_d5fec"]
+[ext_resource type="Script" uid="uid://njhke0h8cgm0" path="res://texture_rect_3.gd" id="3_qj36n"]
+[ext_resource type="AudioStream" uid="uid://dgm5f6p3ytjwp" path="res://scenes/boot/godot/Music_Start_menu_126bpm_D#Min_Loop.wav" id="7_waw0y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qj36n"]
+noise_type = 3
+seed = 100
+frequency = 0.1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d5fec"]
+noise_type = 3
+frequency = 0.1
+
+[node name="Control" type="Control" unique_id=2117606514]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qj36n")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1372471296]
+modulate = Color(0.4693026, 0.46929413, 0.46929634, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ptpru")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1665915240]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(578, 306)
+texture = ExtResource("2_ptpru")
+script = ExtResource("3_qj36n")
+noise = SubResource("FastNoiseLite_qj36n")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=385275451]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(580, 306)
+texture = ExtResource("1_js3ya")
+script = ExtResource("3_qj36n")
+noise = SubResource("FastNoiseLite_d5fec")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=609948404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_d5fec")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1310555011]
+stream = ExtResource("7_waw0y")
+autoplay = true
