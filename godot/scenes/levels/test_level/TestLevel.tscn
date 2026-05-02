@@ -27,6 +27,7 @@
 [ext_resource type="Shader" uid="uid://hgme7icmo77q" path="res://scenes/game_elements/cadenas/laser.gdshader" id="16_sf55r"]
 [ext_resource type="Script" uid="uid://cm0iyiiligpsi" path="res://scenes/levels/test_level/button.gd" id="16_xvx78"]
 [ext_resource type="PackedScene" uid="uid://ccphtijvklfkj" path="res://scenes/game_elements/torretas/laser_progresivo.tscn" id="17_fqbio"]
+[ext_resource type="PackedScene" uid="uid://ctpf2mugoxspq" path="res://scenes/game_elements/cadenas/cadenas_minas.tscn" id="19_r0bn1"]
 [ext_resource type="Script" uid="uid://t34xaqpcgbnn" path="res://scenes/levels/test_level/gorro_frigio.gd" id="22_awduv"]
 [ext_resource type="Texture2D" uid="uid://bm8notya2lij" path="res://assets/images/puntero/Puntero_PlaceHolder_Gorro_WhiteLine.png" id="22_ppy3a"]
 
@@ -844,6 +845,7 @@ vertical_alignment = 2
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
+scene = ExtResource("19_r0bn1")
 description = "[color=light_green]Explosión de alto daño en contacto[/color]
 [color=pink]Tardan en reponerse luego de explotar[/color]"
 

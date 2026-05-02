@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3x830hanhcvk"]
 
 [ext_resource type="Shader" uid="uid://hgme7icmo77q" path="res://scenes/game_elements/cadenas/laser.gdshader" id="1_8h8df"]
+[ext_resource type="Script" uid="uid://bxjbo0sodxm61" path="res://scenes/game_elements/cadenas/laser_sprite.gd" id="2_ihh04"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sf55r"]
 shader = ExtResource("1_8h8df")
@@ -32,3 +33,4 @@ height = 200
 [node name="LaserSprite" type="Sprite2D" unique_id=257009757 groups=["laser"]]
 material = SubResource("ShaderMaterial_sf55r")
 texture = SubResource("GradientTexture2D_mq7tu")
+script = ExtResource("2_ihh04")

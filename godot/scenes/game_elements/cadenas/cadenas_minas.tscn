@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://ctpf2mugoxspq"]
+
+[ext_resource type="Script" uid="uid://cepgig62ry65e" path="res://scenes/game_elements/cadenas/cadenas_minas.gd" id="2_li2xk"]
+[ext_resource type="PackedScene" uid="uid://c313uopq6njrd" path="res://scenes/game_elements/cadenas/animacion_mina.tscn" id="2_os5pl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sf55r"]
+
+[node name="CadenasMinas" type="Sprite2D" unique_id=257009757 groups=["laser"]]
+material = SubResource("ShaderMaterial_sf55r")
+script = ExtResource("2_li2xk")
+width = 50.0
+
+[node name="AnimacionMina" parent="." unique_id=817358525 instance=ExtResource("2_os5pl")]
+scale = Vector2(0.25, 0.25)
+
+[node name="AnimacionMina2" parent="." unique_id=2013432645 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(50, 0)
+
+[node name="AnimacionMina3" parent="." unique_id=609973921 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(100, 0)
+
+[node name="AnimacionMina4" parent="." unique_id=752899050 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(150, 0)
+
+[node name="AnimacionMina5" parent="." unique_id=1082201254 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(200, 0)
+
+[node name="AnimacionMina6" parent="." unique_id=1940511718 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(250, 0)
+
+[node name="AnimacionMina7" parent="." unique_id=1264784411 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(300, 0)
+
+[node name="AnimacionMina8" parent="." unique_id=198108997 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(350, 0)
+
+[node name="AnimacionMina9" parent="." unique_id=242134505 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(400, 0)
+
+[node name="AnimacionMina10" parent="." unique_id=1444710006 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(450, 0)
+
+[node name="AnimacionMina11" parent="." unique_id=934876439 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(500, 0)
+
+[node name="AnimacionMina12" parent="." unique_id=2143547037 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(550, 0)
+
+[node name="AnimacionMina13" parent="." unique_id=917853655 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(600, 0)
+
+[node name="AnimacionMina14" parent="." unique_id=1370413296 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(650, 0)
+
+[node name="AnimacionMina15" parent="." unique_id=842417309 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(700, 0)
+
+[node name="AnimacionMina16" parent="." unique_id=1329734379 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(750, 0)
+
+[node name="AnimacionMina17" parent="." unique_id=480071855 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(800, 0)
+
+[node name="AnimacionMina18" parent="." unique_id=323138665 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(850, 0)
+
+[node name="AnimacionMina19" parent="." unique_id=1961526762 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(900, 0)
+
+[node name="AnimacionMina20" parent="." unique_id=1340605466 instance=ExtResource("2_os5pl")]
+visible = false
+position = Vector2(950, 0)

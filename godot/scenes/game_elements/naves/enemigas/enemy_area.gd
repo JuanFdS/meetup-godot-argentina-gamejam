@@ -5,3 +5,6 @@ func hit_base():
 
 func hit_by_disparo(disparo):
 	get_parent().hit_by_disparo(disparo)
+
+func duenio():
+	return get_parent()

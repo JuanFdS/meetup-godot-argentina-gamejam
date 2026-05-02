@@ -33,6 +33,10 @@ func hit_by_disparo(disparo):
 	create_tween().tween_property($Sprite2D, "modulate", Color.WHITE, 0.3).from(Color.RED)
 	reducir_salud(disparo.danio)
 
+func hit_by_explosion(danio):
+	create_tween().tween_property($Sprite2D, "modulate", Color.WHITE, 0.3).from(Color.RED)
+	reducir_salud(danio)
+
 func reducir_salud(danio):
 	health -= danio
 	if health <= 0.0:

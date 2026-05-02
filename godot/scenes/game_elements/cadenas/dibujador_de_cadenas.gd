@@ -36,22 +36,24 @@ func exit_state():
 				get_parent().torreta_desplegada(unidad_actual)
 				line.modulate = Color.WHITE
 				_asteroide_bajo_el_cursor().agregar_torreta(torreta_2)
-				var line_area := Area2D.new()
-				var collision_shape := CollisionShape2D.new()
-				line_area.add_child(collision_shape)
-				var area_shape := RectangleShape2D.new()
-				collision_shape.shape = area_shape
-				var first_point := line.get_point_position(0)
-				var last_point := line.get_point_position(1)
-				var area_length := first_point.distance_to(last_point)
-				var area_width := line.width
-				line.add_child(line_area)
-				line_area.position = (first_point + last_point) / 2.0
-				line_area.rotation = first_point.direction_to(last_point).angle()
-				line_area.collision_mask = 0
-				line_area.collision_layer = 0
-				line_area.set_collision_layer_value(4, true)
-				area_shape.size = Vector2(area_length, area_width)
+				laser_sprite.desplegar()
+				if laser_sprite is LaserSprite:
+					var line_area := Area2D.new()
+					var collision_shape := CollisionShape2D.new()
+					line_area.add_child(collision_shape)
+					var area_shape := RectangleShape2D.new()
+					collision_shape.shape = area_shape
+					var first_point := line.get_point_position(0)
+					var last_point := line.get_point_position(1)
+					var area_length := first_point.distance_to(last_point)
+					var area_width := line.width
+					line.add_child(line_area)
+					line_area.position = (first_point + last_point) / 2.0
+					line_area.rotation = first_point.direction_to(last_point).angle()
+					line_area.collision_mask = 0
+					line_area.collision_layer = 0
+					line_area.set_collision_layer_value(4, true)
+					area_shape.size = Vector2(area_length, area_width)
 			else:
 				line.queue_free()
 				torreta_1.queue_free()
@@ -91,7 +93,7 @@ func enter_state():
 			_asteroide_bajo_el_cursor().agregar_torreta(torreta_1)
 			torreta_2 = unidad_actual.torreta_scene.instantiate()
 			torreta_2.process_mode = Node.PROCESS_MODE_DISABLED
-			laser_sprite = LASER_SPRITE.instantiate()
+			laser_sprite = unidad_actual.cadena_scene.instantiate()
 			
 			line.add_child(laser_sprite)
 			line.add_child(torreta_1)
@@ -151,8 +153,7 @@ func update_line(linea_con_cadena: Node):
 	var laser = linea_con_cadena.get_children().filter(func(laser): return laser.is_in_group("laser")).front()
 	laser.position = (point_a + point_b) / 2
 	laser.rotation = (point_a.direction_to(point_b)).angle()
-	var laser_texture = laser.texture as GradientTexture2D
-	laser_texture.width = max(1, point_a.distance_to(point_b))
+	laser.width = point_a.distance_to(point_b)
 
 func change_state(new_state):
 	exit_state()

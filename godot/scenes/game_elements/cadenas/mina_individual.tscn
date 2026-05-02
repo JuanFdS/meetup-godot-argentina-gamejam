@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cg8hxsxc8cq0m"]
+
+[ext_resource type="Script" uid="uid://dmepbeob8ywdu" path="res://scenes/game_elements/cadenas/mina_individual.gd" id="1_sybyx"]
+[ext_resource type="PackedScene" uid="uid://c313uopq6njrd" path="res://scenes/game_elements/cadenas/animacion_mina.tscn" id="1_yqgbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_li2xk"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sybyx"]
+radius = 27.0
+
+[node name="MinaIndividual" type="Node2D" unique_id=1228813711]
+script = ExtResource("1_sybyx")
+
+[node name="AnimacionMina" parent="." unique_id=817358525 instance=ExtResource("1_yqgbi")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1300542600]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=791908343]
+shape = SubResource("CircleShape2D_li2xk")
+
+[node name="AreaDeDanio" type="Area2D" parent="." unique_id=44848025]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeDanio" unique_id=1283787360]
+shape = SubResource("CircleShape2D_sybyx")

@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://c313uopq6njrd"]
+
+[ext_resource type="Texture2D" uid="uid://b8yog6synway2" path="res://assets/images/cadenas/Mina_oceanica.png" id="1_hrf1t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li2xk"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(0, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os5pl"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(0, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjjo3"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(276, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgv23"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(552, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qh0v"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(828, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2okl0"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(1104, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm4y5"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(1380, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnhsx"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(1656, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0cce"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(1932, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sd1r"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(2208, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5823g"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(2484, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od2nc"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(2760, 0, 276, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pbh4"]
+atlas = ExtResource("1_hrf1t")
+region = Rect2(3036, 0, 276, 276)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_os5pl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li2xk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os5pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjjo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgv23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qh0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2okl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm4y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnhsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0cce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sd1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5823g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od2nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pbh4")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 30.0
+}]
+
+[node name="AnimacionMina" type="AnimatedSprite2D" unique_id=817358525]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_os5pl")
+animation = &"explode"
+frame = 11
+frame_progress = 1.0

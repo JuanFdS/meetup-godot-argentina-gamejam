@@ -20,6 +20,9 @@ class UnidadSeleccionada:
 	var torreta_scene:
 		get():
 			return torreta_button.scene
+	var cadena_scene:
+		get():
+			return cadena_button.scene
 	
 	func _init(_torreta_button, _cadena_button) -> void:
 		torreta_button = _torreta_button
