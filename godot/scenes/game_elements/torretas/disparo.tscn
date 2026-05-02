@@ -5,12 +5,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vja0"]
 size = Vector2(24, 12)
 
+[sub_resource type="Gradient" id="Gradient_ob6x7"]
+colors = PackedColorArray(0.83137256, 0.627451, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h48pl"]
+gradient = SubResource("Gradient_ob6x7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ob6x7"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 19.93
+initial_velocity_max = 79.729996
+color_initial_ramp = SubResource("GradientTexture1D_h48pl")
+
 [node name="Disparo" type="Node2D" unique_id=821356321]
 script = ExtResource("1_ob6x7")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=611284467]
 position = Vector2(-2, 1)
-polygon = PackedVector2Array(-7, -6, -8, 3, 12, 3, 12, -6)
+polygon = PackedVector2Array(-5, -6, -5, 4, 10, 1, 10, -2)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1100203086]
 collision_layer = 0
@@ -18,3 +31,13 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=773084772]
 shape = SubResource("RectangleShape2D_7vja0")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=773583219]
+position = Vector2(10, 0)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ob6x7")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=291576484]
+position = Vector2(10, 0)

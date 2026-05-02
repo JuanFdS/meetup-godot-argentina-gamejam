@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ce1hmq888vn2t" path="res://assets/images/naves/Nave-Basica.png" id="4_tdx1q"]
 [ext_resource type="Texture2D" uid="uid://0huqrjpx67vo" path="res://assets/images/naves/Barco-frances.png" id="5_4fnpx"]
 [ext_resource type="Texture2D" uid="uid://do101avbtcje4" path="res://assets/images/naves/Nave-Rapida.png" id="6_7u2gn"]
+[ext_resource type="Script" uid="uid://cjl1xdxcvw1jc" path="res://scenes/game_elements/naves/enemigas/gold_up.gd" id="8_omu26"]
 
 [sub_resource type="Animation" id="Animation_rho34"]
 length = 0.001
@@ -188,6 +189,38 @@ colors = PackedColorArray(1, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4fnpx"]
 gradient = SubResource("Gradient_tdx1q")
 
+[sub_resource type="Gradient" id="Gradient_7u2gn"]
+colors = PackedColorArray(1, 0.80784315, 0, 1, 1, 0.49411765, 0.2901961, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_omu26"]
+gradient = SubResource("Gradient_7u2gn")
+
+[sub_resource type="Gradient" id="Gradient_ou6c3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.4117647)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d4u3v"]
+gradient = SubResource("Gradient_ou6c3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7u2gn"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+spread = 180.0
+initial_velocity_min = 69.77
+initial_velocity_max = 122.93
+angular_velocity_min = -129.17001
+angular_velocity_max = 71.75998
+gravity = Vector3(0, 0, 0)
+scale_max = 14.29
+color = Color(1, 0.20999998, 0.20999998, 1)
+color_ramp = SubResource("GradientTexture1D_d4u3v")
+color_initial_ramp = SubResource("GradientTexture1D_omu26")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7u2gn"]
+font_size = 14
+font_color = Color(1, 0.8156863, 0, 1)
+shadow_color = Color(0, 0, 0, 0.68235296)
+
 [node name="NaveEnemiga" type="PathFollow2D" unique_id=1585765628]
 rotates = false
 loop = false
@@ -203,7 +236,6 @@ position = Vector2(0, 5)
 scale = Vector2(0.8, 0.8)
 
 [node name="Inglesa" type="Sprite2D" parent="Imagen" unique_id=723503334]
-visible = false
 material = SubResource("ShaderMaterial_rho34")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_idoxs")
@@ -251,3 +283,18 @@ value = 50.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_tdx1q")
 texture_progress = SubResource("GradientTexture2D_4fnpx")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1119222211]
+emitting = false
+amount = 15
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_7u2gn")
+
+[node name="Label" type="Label" parent="." unique_id=1755108034]
+offset_right = 16.0
+offset_bottom = 20.0
+pivot_offset = Vector2(7, 9)
+text = "+$1"
+label_settings = SubResource("LabelSettings_7u2gn")
+script = ExtResource("8_omu26")

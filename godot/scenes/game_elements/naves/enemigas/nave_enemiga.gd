@@ -93,4 +93,12 @@ func reducir_salud(un_danio):
 	health -= un_danio
 	if health <= 0.0:
 		queue_free()
+		var particles = $GPUParticles2D
+		particles.reparent(get_parent())
+		particles.global_position = global_position
+		particles.restart()
+		var gold_up_label = $Label
+		gold_up_label.reparent(get_parent())
+		gold_up_label.global_position = global_position
+		gold_up_label.start(oro)
 		get_tree().get_nodes_in_group("level").front().nave_derrotada(oro)

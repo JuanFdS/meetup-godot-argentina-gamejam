@@ -782,6 +782,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="TextureButton2" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=2067520554]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
@@ -830,6 +831,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=18043167]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("15_yi6fa")
 script = ExtResource("13_rryp4")
@@ -1229,7 +1231,7 @@ rotation = -1.299832
 scale = Vector2(0.83033943, 0.83033943)
 sprite_frames = SubResource("SpriteFrames_qr8cj")
 autoplay = "default"
-frame_progress = 0.7879582
+frame_progress = 0.8188501
 
 [node name="RightBlackHole" type="AnimatedSprite2D" parent="." unique_id=1228442419]
 modulate = Color(0.6517693, 0.65176934, 0.6517693, 0.72156864)

@@ -57,6 +57,7 @@ func _ready():
 
 func nave_derrotada(oro_ganado):
 	oro += oro_ganado
+	camera_2d.add_shake(7.5)
 
 func torreta_desplegada(unidad):
 	oro -= unidad.costo_total()

@@ -11,6 +11,11 @@ func _ready():
 func on_area_entered(area):
 	area.hit_by_disparo(self)
 	queue_free()
+	var particles = $GPUParticles2D
+	particles.reparent(get_parent())
+	particles.global_position = $Marker2D.global_position
+	particles.global_rotation = global_rotation
+	particles.restart()
 
 func _process(delta: float) -> void:
 	global_position += direction * velocidad * delta
