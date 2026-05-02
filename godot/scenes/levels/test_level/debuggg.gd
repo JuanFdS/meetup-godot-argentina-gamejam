@@ -6,7 +6,7 @@ extends VBoxContainer
 @onready var oro_inicial: SpinBox = $HBoxContainer3/OroInicial
 @onready var valor_venta_torre: SpinBox = $HBoxContainer4/ValorVentaTorre
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	test_level.valor_oro_por_enemigo = oro_x_enemigo.value
 	test_level.valor_costo_por_torre = costo_x_torres.value
 	test_level.valor_venta_torre = valor_venta_torre.value

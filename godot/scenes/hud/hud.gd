@@ -37,5 +37,5 @@ func actualizar_texto_olas():
 	label_ola.text = "%s: %2d / %2d" % [tr("Ola"), nivel.ola_actual, nivel.cantidad_olas]
 	label_enemigos.text = "%s: %3d" % [tr("Enemigos"), nivel.enemigos_restantes]
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	label_oro.text = "%s: %4d" % [tr("Oro"), nivel.oro]

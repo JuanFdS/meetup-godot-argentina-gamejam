@@ -29,7 +29,7 @@ func is_exploding() -> bool:
 func on_area_entered(area):
 	if is_respawning() or is_exploding():
 		return
-	var enemigos = area_de_danio.get_overlapping_areas().map(func(area): return area.duenio())
+	var enemigos = area_de_danio.get_overlapping_areas().map(func(un_area): return un_area.duenio())
 	animacion_mina.play("explode")
 	animacion_mina.animation_finished.connect(func():
 		visible = false

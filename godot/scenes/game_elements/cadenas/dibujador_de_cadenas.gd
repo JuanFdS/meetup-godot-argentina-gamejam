@@ -17,6 +17,8 @@ var torreta_1: Torreta
 var torreta_2: Torreta
 var laser_sprite: Sprite2D
 var torreta_being_dragged: Torreta
+var torreta_dragged_original_position: Vector2
+var asteroide_from_torreta_being_dragged: Asteroide
 @onready var label: RichTextLabel = $Pointer/Label
 @onready var pointer: Node2D = $Pointer
 @onready var detector_de_asteroide: Area2D = $Pointer/DetectorDeAsteroide
@@ -65,21 +67,35 @@ func exit_state():
 			torreta_2.process_mode = Node.PROCESS_MODE_INHERIT
 			torreta_2 = null
 			laser_sprite = null
-			for asteroide in get_tree().get_nodes_in_group("asteroide"):
-				asteroide.modulate = Color.WHITE
+			for un_asteroide in get_tree().get_nodes_in_group("asteroide"):
+				un_asteroide.modulate = Color.WHITE
 		State.DraggingExistingTurret:
 			var asteroide = _asteroide_bajo_el_cursor()
-			if asteroide:
+			if asteroide != null and asteroide.esta_libre():
 				asteroide.agregar_torreta(torreta_being_dragged)
+			elif asteroide:
+				torreta_being_dragged.global_position = torreta_dragged_original_position
+				asteroide_from_torreta_being_dragged.agregar_torreta(torreta_being_dragged)
+				torreta_being_dragged.get_parent().get_children().filter(func(node): return node.is_in_group("laser")).front().visible = true
+				update_line(torreta_being_dragged.get_parent())
 			else:
 				torreta_being_dragged.get_parent().queue_free()
 			torreta_being_dragged = null
+			torreta_dragged_original_position = Vector2.ZERO
+			asteroide_from_torreta_being_dragged = null
+			for un_asteroide in get_tree().get_nodes_in_group("asteroide"):
+				un_asteroide.modulate = Color.WHITE
 
 func enter_state():
 	match state:
 		State.DraggingExistingTurret:
 			torreta_being_dragged = _torreta_bajo_el_cursor()
+			asteroide_from_torreta_being_dragged = torreta_being_dragged.asteroide
 			torreta_being_dragged.quitar_de_asteroide()
+			torreta_dragged_original_position = torreta_being_dragged.global_position
+			for asteroide in get_tree().get_nodes_in_group("asteroide"):
+				if asteroide.esta_libre():
+					asteroide.modulate = Color.CYAN
 			
 	match state:
 		State.Nothing:
@@ -136,9 +152,9 @@ para confirmar"
 		State.DraggingExistingTurret:
 			hint_text = "Soltar Click
 en asteroide vacío"
-			pointer_color = Color.CYAN if _can_place_torreta() else Color.RED
+			pointer_color = Color.CYAN if _can_move_torreta_here() else Color.RED
 			var laser = torreta_being_dragged.get_parent().get_children().filter(func(node): return node.is_in_group("laser")).front()
-			laser.visible = _can_place_torreta()
+			laser.visible = _can_move_torreta_here()
 			torreta_being_dragged.global_position = get_global_mouse_position()
 			update_line(torreta_being_dragged.get_parent())
 
@@ -150,7 +166,7 @@ func update_line(linea_con_cadena: Node):
 	var point_b = segunda_torreta.position
 	linea_con_cadena.set_point_position(0, point_a)
 	linea_con_cadena.set_point_position(1, point_b)
-	var laser = linea_con_cadena.get_children().filter(func(laser): return laser.is_in_group("laser")).front()
+	var laser = linea_con_cadena.get_children().filter(func(un_laser): return un_laser.is_in_group("laser")).front()
 	laser.position = (point_a + point_b) / 2
 	laser.rotation = (point_a.direction_to(point_b)).angle()
 	laser.width = point_a.distance_to(point_b)
@@ -174,6 +190,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+func _can_move_torreta_here() -> bool:
+	var asteroide = _asteroide_bajo_el_cursor()
+	return asteroide != null and asteroide.esta_libre()
 
 func _can_place_torreta() -> bool:
 	var asteroide = _asteroide_bajo_el_cursor()

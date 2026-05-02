@@ -11,6 +11,7 @@ func _ready():
 	rotation_per_second = PI / 12 * [-1, 1].pick_random()
 
 func _process(delta: float) -> void:
+	$Sprite2D.rotation += rotation_per_second * delta
 	$Polygon2D.rotation += rotation_per_second * delta
 
 func agregar_torreta(torreta):

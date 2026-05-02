@@ -60,20 +60,20 @@ func _process(delta: float) -> void:
 func hit_base():
 	queue_free()
 
-func damaged_by_laser(danio):
-	reducir_salud(danio)
+func damaged_by_laser(un_danio):
+	reducir_salud(un_danio)
 
 func hit_by_disparo(disparo):
 	create_tween().tween_property($Imagen, "modulate", Color.WHITE, 0.3).from(Color.RED)
 	reducir_salud(disparo.danio)
 
-func hit_by_explosion(danio):
+func hit_by_explosion(un_danio):
 	create_tween().tween_property($Imagen, "modulate", Color.WHITE, 0.3).from(Color.RED)
-	reducir_salud(danio)
+	reducir_salud(un_danio)
 
-func reducir_salud(danio):
+func reducir_salud(un_danio):
 	$HealthBar.visible = true
-	health -= danio
+	health -= un_danio
 	if health <= 0.0:
 		queue_free()
 		get_tree().get_nodes_in_group("level").front().nave_derrotada()

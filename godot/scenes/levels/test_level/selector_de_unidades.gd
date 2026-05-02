@@ -55,7 +55,7 @@ func elegir_cadena(boton):
 	selected_cadena_button = boton
 	dibujador_de_cadenas.unidad_actual = obtener_unidad()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	unidad_tooltip.visible = false
 	for button in all_buttons:
 		if button.is_hovered():
