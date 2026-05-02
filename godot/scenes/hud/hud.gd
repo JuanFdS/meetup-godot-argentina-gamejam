@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var nivel: Level
 @onready var start_wave_button: Button = %StartWaveButton
 @onready var label_ola: Label = %LabelOla
+@onready var label_oro: Label = %LabelOro
 @onready var health_bar: TextureProgressBar = %HealthBar
 @onready var label_enemigos: Label = %LabelEnemigos
 
@@ -35,3 +36,6 @@ func on_enemigo_derrotado():
 func actualizar_texto_olas():
 	label_ola.text = "%s: %2d / %2d" % [tr("Ola"), nivel.ola_actual, nivel.olas]
 	label_enemigos.text = "%s: %3d" % [tr("Enemigos"), nivel.enemigos_restantes]
+
+func _process(delta: float) -> void:
+	label_oro.text = "%s: %4d" % [tr("Oro"), nivel.oro]

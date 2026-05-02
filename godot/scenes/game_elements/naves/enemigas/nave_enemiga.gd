@@ -28,3 +28,4 @@ func hit_by_disparo(disparo):
 	health -= disparo.danio
 	if health <= 0:
 		queue_free()
+		get_tree().get_nodes_in_group("level").front().nave_derrotada()

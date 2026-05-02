@@ -31,6 +31,7 @@ func exit_state():
 			pass
 		State.Drawing:
 			if _can_place_torreta():
+				get_parent().torreta_desplegada()
 				line.modulate = Color.WHITE
 				_asteroide_bajo_el_cursor().agregar_torreta(torreta_2)
 				var line_area := Area2D.new()
@@ -172,7 +173,7 @@ func _ready() -> void:
 
 func _can_place_torreta() -> bool:
 	var asteroide = _asteroide_bajo_el_cursor()
-	return asteroide != null and asteroide.esta_libre()
+	return asteroide != null and asteroide.esta_libre() and get_parent().valor_costo_por_torre <= get_parent().oro
 
 func _torreta_bajo_el_cursor() -> Torreta:
 	return _elemento_bajo_el_cursor("torreta")

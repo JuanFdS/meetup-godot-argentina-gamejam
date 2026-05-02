@@ -16,7 +16,9 @@
 [ext_resource type="Script" uid="uid://d3ntdvhuhk5jj" path="res://scenes/levels/game_over_message.gd" id="10_l0ea6"]
 [ext_resource type="Script" uid="uid://xwiry1f5gslj" path="res://scenes/levels/play_again.gd" id="11_6d6c0"]
 [ext_resource type="PackedScene" uid="uid://c4mqd7q45joxi" path="res://scenes/music/Music.tscn" id="12_w0124"]
+[ext_resource type="Script" uid="uid://gxgjdkxkr38h" path="res://scenes/levels/test_level/debuggg.gd" id="15_ta2wi"]
 [ext_resource type="Shader" uid="uid://hgme7icmo77q" path="res://scenes/game_elements/cadenas/laser.gdshader" id="16_sf55r"]
+[ext_resource type="Script" uid="uid://cm0iyiiligpsi" path="res://scenes/levels/test_level/button.gd" id="16_xvx78"]
 
 [sub_resource type="Gradient" id="Gradient_lln15"]
 offsets = PackedFloat32Array(1)
@@ -46,12 +48,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -7.7276735, 41.491806, 0, 0, 0, 0, 102.134705, 20.729507, 0, 0, 0, 0, 209.02783, 61.03279, 0, 0, 0, 0, 272.37192, 117.213135, 0, 0, 0, 0, 438.65012, 201.48361, 0, 0, 0, 0, 563, 268, 0, 0, 0, 0, 593, 345, 0, 0, 0, 0, 597, 418, 0, 0, 0, 0, 598, 552)
 }
 point_count = 9
-
-[sub_resource type="Curve2D" id="Curve2D_mq7tu"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 52.647095, -182.00824, 0, 0, 0, 0, -88.88733, -80.63937, 0, 0, 0, 0, -111.65161, 68.36063, 0, 0, 0, 0, -161.1391, 178.27866, 0, 0, 0, 0, -228.4422, 251.5574, 0, 0, 0, 0, -341.2738, 322.39346, 0, 0, 0, 0, -507.552, 315.06558)
-}
-point_count = 7
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5womf"]
 radius = 67.02985
@@ -262,6 +258,9 @@ _data = {
 &"popup": SubResource("Animation_l0ea6")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_ta2wi"]
+font_size = 15
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mq7tu"]
 shader = ExtResource("16_sf55r")
 shader_parameter/beams = 2
@@ -281,7 +280,7 @@ shader_parameter/y_offset = 0.0
 shader_parameter/fixed_edge_size = 0.05
 shader_parameter/noise_scale = Vector2(1, 1)
 
-[node name="TestLevel" type="Node2D" unique_id=550200690 node_paths=PackedStringArray("caminos")]
+[node name="TestLevel" type="Node2D" unique_id=550200690 node_paths=PackedStringArray("caminos") groups=["level"]]
 script = ExtResource("1_3vtac")
 caminos = [NodePath("Camino")]
 
@@ -333,22 +332,6 @@ position = Vector2(-6.1923065, 100.02684)
 scale = Vector2(1.010355, 0.8187919)
 curve = SubResource("Curve2D_5womf")
 
-[node name="Camino2" type="Node2D" parent="." unique_id=2110475894]
-position = Vector2(1166, 189)
-script = ExtResource("1_cfq6v")
-
-[node name="StarPath" type="Node2D" parent="Camino2" unique_id=1908509150 node_paths=PackedStringArray("path")]
-script = ExtResource("2_2eagb")
-path = NodePath("../Path2D")
-star_scale = 0.30000000000000004
-star_scale_random = 0.2
-max_distance_from_path = 30.0
-
-[node name="Path2D" type="Path2D" parent="Camino2" unique_id=8176354]
-position = Vector2(-6.1923065, 100.02684)
-scale = Vector2(1.010355, 0.8187919)
-curve = SubResource("Curve2D_mq7tu")
-
 [node name="Base" type="Node2D" parent="." unique_id=722738729]
 unique_name_in_owner = true
 position = Vector2(599, 545)
@@ -392,6 +375,106 @@ script = ExtResource("9_mq7tu")
 asteroide = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide/Polygon2D/Area2D" unique_id=819967091]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide7" type="Node2D" parent="." unique_id=1846765825]
+position = Vector2(197, 431)
+script = ExtResource("3_72f13")
+capacidad_de_torretas = null
+
+[node name="Polygon2D" type="Polygon2D" parent="Asteroide7" unique_id=578831630]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 1)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="Asteroide7/Polygon2D" unique_id=222069804 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide7/Polygon2D/Area2D" unique_id=906100164]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide8" type="Node2D" parent="." unique_id=1531942419]
+position = Vector2(621, 208)
+script = ExtResource("3_72f13")
+capacidad_de_torretas = null
+
+[node name="Polygon2D" type="Polygon2D" parent="Asteroide8" unique_id=766105297]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 1)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="Asteroide8/Polygon2D" unique_id=691784032 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide8/Polygon2D/Area2D" unique_id=2140988981]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide9" type="Node2D" parent="." unique_id=1970855813]
+position = Vector2(798, 499)
+script = ExtResource("3_72f13")
+capacidad_de_torretas = null
+
+[node name="Polygon2D" type="Polygon2D" parent="Asteroide9" unique_id=2002172149]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 1)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="Asteroide9/Polygon2D" unique_id=464189048 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide9/Polygon2D/Area2D" unique_id=2032947634]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide10" type="Node2D" parent="." unique_id=1668508549]
+position = Vector2(408, 537)
+script = ExtResource("3_72f13")
+capacidad_de_torretas = null
+
+[node name="Polygon2D" type="Polygon2D" parent="Asteroide10" unique_id=1793375709]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 1)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="Asteroide10/Polygon2D" unique_id=6067831 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide10/Polygon2D/Area2D" unique_id=1975877576]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide11" type="Node2D" parent="." unique_id=289901043]
+position = Vector2(768, 113)
+script = ExtResource("3_72f13")
+capacidad_de_torretas = null
+
+[node name="Polygon2D" type="Polygon2D" parent="Asteroide11" unique_id=1089885275]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 1)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="Asteroide11/Polygon2D" unique_id=1353481591 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide11/Polygon2D/Area2D" unique_id=1653865389]
 scale = Vector2(0.8, 0.8)
 shape = SubResource("ConvexPolygonShape2D_mq7tu")
 
@@ -568,6 +651,19 @@ text = "Enemigos: 000"
 label_settings = SubResource("LabelSettings_72f13")
 vertical_alignment = 1
 
+[node name="VSeparator5" type="VSeparator" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=863982936]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tesqw")
+
+[node name="LabelOro" type="Label" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=908903259]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tesqw")
+text = "Oro: 00"
+label_settings = SubResource("LabelSettings_72f13")
+vertical_alignment = 1
+
 [node name="VSeparator4" type="VSeparator" parent="HUD/Control/PanelContainer/HBoxContainer" unique_id=993711166]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_tesqw")
@@ -623,6 +719,72 @@ offset_bottom = 765.0001
 theme_override_font_sizes/font_size = 40
 text = "Jugar de nuevo"
 script = ExtResource("11_6d6c0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1898408752]
+offset_left = 911.0
+offset_top = 211.0
+offset_right = 1163.0
+offset_bottom = 339.0
+script = ExtResource("15_ta2wi")
+
+[node name="Label" type="Label" parent="HUD/VBoxContainer" unique_id=603325104]
+layout_mode = 2
+text = "Para debuggear y experimentar"
+label_settings = SubResource("LabelSettings_ta2wi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=1423840634]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/VBoxContainer/HBoxContainer" unique_id=1845796871]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Oro x enemigo"
+
+[node name="OroXEnemigo" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer" unique_id=1648645772]
+layout_mode = 2
+max_value = 5000.0
+value = 5.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=1446488454]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/VBoxContainer/HBoxContainer2" unique_id=1430446928]
+layout_mode = 2
+text = "Costo x torres"
+
+[node name="CostoXTorres" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer2" unique_id=1072381651]
+layout_mode = 2
+max_value = 5000.0
+value = 10.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=1221197756]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/VBoxContainer/HBoxContainer4" unique_id=1161560854]
+layout_mode = 2
+text = "Valor venta torre"
+
+[node name="ValorVentaTorre" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer4" unique_id=56339761]
+layout_mode = 2
+max_value = 5000.0
+value = 10.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=898760966]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/VBoxContainer/HBoxContainer3" unique_id=927051025]
+layout_mode = 2
+text = "Oro inicial"
+
+[node name="OroInicial" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer3" unique_id=50015053]
+layout_mode = 2
+max_value = 5000.0
+value = 10.0
+
+[node name="Button" type="Button" parent="HUD/VBoxContainer" unique_id=1510692608]
+layout_mode = 2
+text = "Reiniciar juego"
+script = ExtResource("16_xvx78")
 
 [node name="Music" parent="." unique_id=1600911506 instance=ExtResource("12_w0124")]
 unique_name_in_owner = true

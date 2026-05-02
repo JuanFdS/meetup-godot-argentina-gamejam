@@ -53,7 +53,9 @@ func disparar(enemy):
 	disparo.direction = spawn_position.direction_to(enemy.global_position)
 	get_parent().add_child(disparo)
 	disparo.global_position = spawn_position
-		
+
+func _exit_tree() -> void:
+	get_tree().get_nodes_in_group("level").front().torreta_vendida()
 	
 	
 	

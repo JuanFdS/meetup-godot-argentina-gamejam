@@ -62,12 +62,11 @@ radius = 47.042534
 
 [node name="Torreta" type="Node2D" unique_id=2041932179]
 script = ExtResource("1_7vja0")
-fire_rate = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=18273853]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_tv7qx")
-frame_progress = 0.60833603
+frame_progress = 0.2829115
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=912400165]

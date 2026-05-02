@@ -25,6 +25,11 @@ var ola_actual: int = 0
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var music: Music = %Music
 
+var oro: float = 100
+
+var valor_oro_por_enemigo: float
+var valor_costo_por_torre: float
+var valor_venta_torre: float
 var enemigos_por_ola: int = 5
 
 var tiempo_entre_enemigos: float = 5.0
@@ -38,6 +43,15 @@ var enemigos_restantes :
 func _ready():
 	base.damaged.connect(on_base_damaged)
 	music.play(mode)
+
+func nave_derrotada():
+	oro += valor_oro_por_enemigo
+
+func torreta_desplegada():
+	oro -= valor_costo_por_torre
+
+func torreta_vendida():
+	oro += valor_venta_torre / 2
 
 func on_base_damaged(damage):
 	health -= damage
