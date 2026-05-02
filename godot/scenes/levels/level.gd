@@ -24,7 +24,7 @@ var health: float = max_health
 var cantidad_olas: int :
 	get():
 		return olas().size()
-var ola_actual: int = 0
+var ola_actual: int = 5
 var ola_actual_contenido = []
 var proximo_evento
 
@@ -215,11 +215,13 @@ func ola_6():
 	eventos += seguidilla(1, 12, 1.5, NaveEnemiga.Tipo.Rapida, camino_1)
 	eventos += seguidilla(1, 3, 3.5, NaveEnemiga.Tipo.Francesa, camino_1)
 	eventos += seguidilla(1, 1, 0, NaveEnemiga.Tipo.Boss, camino_2)
+	eventos += seguidilla(1, 15, 1, NaveEnemiga.Tipo.Rapida, camino_2)
+	eventos += seguidilla(1, 5, 3, NaveEnemiga.Tipo.Inglesa, camino_2)
 	eventos.sort_custom(func(evento1, evento2): return evento1[0] < evento2[0])
 	return  eventos
 
 func prender_todo():
-	oro += 200
+	oro += 700
 	habilitar_nueva_torreta_y_cadenas()
 	habilitar_primera_cadena_nueva()
 	habilitar_segundo_camino()
@@ -230,7 +232,12 @@ func habilitar_segundo_camino():
 	entrar_asteroides(
 		$AsteroidesAPartirDeOla4,
 		[$AsteroidesAPartirDeOla4/Asteroide5],
-		[$AsteroidesAPartirDeOla4/Asteroide3, $AsteroidesAPartirDeOla4/Asteroide6, $AsteroidesAPartirDeOla4/Asteroide4]
+		[$AsteroidesAPartirDeOla4/Asteroide3,
+		$AsteroidesAPartirDeOla4/Asteroide6,
+		$AsteroidesAPartirDeOla4/Asteroide4,
+		$AsteroidesAPartirDeOla4/Asteroide7,
+		$AsteroidesAPartirDeOla4/Asteroide8
+		]
 	)
 	
 

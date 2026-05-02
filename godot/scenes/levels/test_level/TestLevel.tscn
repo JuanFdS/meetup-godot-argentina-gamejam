@@ -248,6 +248,25 @@ bg_color = Color(0, 0, 0, 0.9019608)
 border_width_right = 5
 border_width_bottom = 5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mq7tu"]
+shader = ExtResource("16_sf55r")
+shader_parameter/beams = 2
+shader_parameter/energy = 3.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 10
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.10000000149012
+shader_parameter/outline_thickness = 0.03
+shader_parameter/beam_difference = 0.0
+shader_parameter/glow = 0.0
+shader_parameter/outline_glow = 0.0
+shader_parameter/color = Color(0.91, 1, 1, 1)
+shader_parameter/outline_color = Color(0.5, 1, 0.96, 1)
+shader_parameter/progress = 1.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(1, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_l0ea6"]
 font_size = 150
 outline_size = 20
@@ -313,25 +332,6 @@ _data = {
 &"RESET": SubResource("Animation_6d6c0"),
 &"popup": SubResource("Animation_l0ea6")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mq7tu"]
-shader = ExtResource("16_sf55r")
-shader_parameter/beams = 2
-shader_parameter/energy = 3.0
-shader_parameter/roughness = 3
-shader_parameter/frequency = 10
-shader_parameter/speed = 1.0
-shader_parameter/thickness = 0.10000000149012
-shader_parameter/outline_thickness = 0.03
-shader_parameter/beam_difference = 0.0
-shader_parameter/glow = 0.0
-shader_parameter/outline_glow = 0.0
-shader_parameter/color = Color(0.91, 1, 1, 1)
-shader_parameter/outline_color = Color(0.5, 1, 0.96, 1)
-shader_parameter/progress = 1.0
-shader_parameter/y_offset = 0.0
-shader_parameter/fixed_edge_size = 0.05
-shader_parameter/noise_scale = Vector2(1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cb3jl"]
 atlas = ExtResource("32_jpuvf")
@@ -699,6 +699,54 @@ script = ExtResource("9_mq7tu")
 asteroide = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidesAPartirDeOla4/Asteroide5/Polygon2D/Area2D" unique_id=823009695]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide7" type="Node2D" parent="AsteroidesAPartirDeOla4" unique_id=324479523]
+position = Vector2(701, 133)
+script = ExtResource("3_72f13")
+
+[node name="Sprite2D" type="Sprite2D" parent="AsteroidesAPartirDeOla4/Asteroide7" unique_id=90934436]
+position = Vector2(-3, -8)
+scale = Vector2(0.81333333, 0.81333333)
+texture = ExtResource("10_ecmaq")
+
+[node name="Polygon2D" type="Polygon2D" parent="AsteroidesAPartirDeOla4/Asteroide7" unique_id=1472698638]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 0)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="AsteroidesAPartirDeOla4/Asteroide7/Polygon2D" unique_id=2038197086 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidesAPartirDeOla4/Asteroide7/Polygon2D/Area2D" unique_id=1689557504]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("ConvexPolygonShape2D_mq7tu")
+
+[node name="Asteroide8" type="Node2D" parent="AsteroidesAPartirDeOla4" unique_id=2043486452]
+position = Vector2(1026, 343)
+script = ExtResource("3_72f13")
+
+[node name="Sprite2D" type="Sprite2D" parent="AsteroidesAPartirDeOla4/Asteroide8" unique_id=822939716]
+position = Vector2(-3, -8)
+scale = Vector2(0.81333333, 0.81333333)
+texture = ExtResource("10_ecmaq")
+
+[node name="Polygon2D" type="Polygon2D" parent="AsteroidesAPartirDeOla4/Asteroide8" unique_id=956799237]
+position = Vector2(-6, -13)
+color = Color(0.54509807, 0.31764707, 0.19215687, 0)
+polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
+
+[node name="Area2D" type="Area2D" parent="AsteroidesAPartirDeOla4/Asteroide8/Polygon2D" unique_id=355123741 node_paths=PackedStringArray("asteroide")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_mq7tu")
+asteroide = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidesAPartirDeOla4/Asteroide8/Polygon2D/Area2D" unique_id=1693109814]
 scale = Vector2(0.8, 0.8)
 shape = SubResource("ConvexPolygonShape2D_mq7tu")
 
@@ -1166,40 +1214,6 @@ text = "[color=light_green]Efecto realentizador[/color]
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
-[node name="GameOverMessage" type="Control" parent="HUD" unique_id=639399914]
-unique_name_in_owner = true
-process_mode = 3
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1156.0
-offset_bottom = 650.0
-script = ExtResource("10_l0ea6")
-
-[node name="Label" type="Label" parent="HUD/GameOverMessage" unique_id=1639815882]
-layout_mode = 0
-offset_right = 1155.0
-offset_bottom = 632.0
-pivot_offset = Vector2(587, 325)
-text = "Ganaste"
-label_settings = SubResource("LabelSettings_l0ea6")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/GameOverMessage" unique_id=1593896418]
-libraries/ = SubResource("AnimationLibrary_6d6c0")
-
-[node name="PlayAgainButton" type="Button" parent="HUD/GameOverMessage" unique_id=741797783]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 544.0
-offset_top = 702.0
-offset_right = 840.0
-offset_bottom = 765.0001
-theme_override_font_sizes/font_size = 40
-text = "Jugar de nuevo"
-script = ExtResource("11_6d6c0")
-
 [node name="Music" parent="." unique_id=1600911506 instance=ExtResource("12_w0124")]
 unique_name_in_owner = true
 
@@ -1222,6 +1236,40 @@ metadata/_edit_lock_ = true
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1969247832]
 process_mode = 3
 layer = 101
+
+[node name="GameOverMessage" type="Control" parent="CanvasLayer2" unique_id=639399914]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1156.0
+offset_bottom = 650.0
+script = ExtResource("10_l0ea6")
+
+[node name="Label" type="Label" parent="CanvasLayer2/GameOverMessage" unique_id=1639815882]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 632.0
+pivot_offset = Vector2(587, 325)
+text = "Ganaste"
+label_settings = SubResource("LabelSettings_l0ea6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2/GameOverMessage" unique_id=1593896418]
+libraries/ = SubResource("AnimationLibrary_6d6c0")
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer2/GameOverMessage" unique_id=741797783]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 544.0
+offset_top = 702.0
+offset_right = 840.0
+offset_bottom = 765.0001
+theme_override_font_sizes/font_size = 40
+text = "Jugar de nuevo"
+script = ExtResource("11_6d6c0")
 
 [node name="GorroFrigio" type="Sprite2D" parent="CanvasLayer2" unique_id=1148643654]
 texture = ExtResource("22_ppy3a")
