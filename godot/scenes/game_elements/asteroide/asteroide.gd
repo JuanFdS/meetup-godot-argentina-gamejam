@@ -13,7 +13,7 @@ func _ready():
 func _process(delta: float) -> void:
 	$Polygon2D.rotation += rotation_per_second * delta
 
-func agregar_torreta(torreta: Torreta):
+func agregar_torreta(torreta):
 	torretas.push_back(torreta)
 	torreta.tree_exited.connect(func():
 		if torreta in torretas:
@@ -21,7 +21,7 @@ func agregar_torreta(torreta: Torreta):
 	)
 	torreta.agregada_a(self)
 
-func torreta_fue_quitada(torreta: Torreta):
+func torreta_fue_quitada(torreta):
 	torretas.erase(torreta)
 
 func esta_libre():

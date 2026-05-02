@@ -47,11 +47,11 @@ func _ready():
 func nave_derrotada():
 	oro += valor_oro_por_enemigo
 
-func torreta_desplegada():
-	oro -= valor_costo_por_torre
+func torreta_desplegada(unidad):
+	oro -= unidad.costo_total()
 
-func torreta_vendida():
-	oro += valor_venta_torre / 2
+func torreta_vendida(unidad):
+	oro += unidad.costo_total()
 
 func on_base_damaged(damage):
 	health -= damage

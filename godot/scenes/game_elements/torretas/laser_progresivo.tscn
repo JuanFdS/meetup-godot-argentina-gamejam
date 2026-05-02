@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://ccphtijvklfkj"]
+
+[ext_resource type="Script" uid="uid://y0i3jonv5xif" path="res://scenes/game_elements/torretas/laser_progresivo.gd" id="1_ncn01"]
+[ext_resource type="Texture2D" uid="uid://l3384010ky2w" path="res://assets/images/torretas/Laser_BASE.png" id="2_t82yl"]
+[ext_resource type="Script" uid="uid://lcff7xjhtsyk" path="res://scenes/game_elements/torretas/picker_area.gd" id="3_m18fs"]
+[ext_resource type="Texture2D" uid="uid://ckbyb2qxyn8vd" path="res://assets/images/torretas/Laser_CABEZA.png" id="3_ncn01"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m18fs"]
+atlas = ExtResource("3_ncn01")
+region = Rect2(0, 0, 118, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uotb8"]
+atlas = ExtResource("3_ncn01")
+region = Rect2(118, 0, 118, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5w7k"]
+atlas = ExtResource("3_ncn01")
+region = Rect2(236, 0, 118, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4ydp"]
+atlas = ExtResource("3_ncn01")
+region = Rect2(354, 0, 118, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdtu6"]
+atlas = ExtResource("3_ncn01")
+region = Rect2(472, 0, 118, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_320sb"]
+atlas = ExtResource("3_ncn01")
+region = Rect2(590, 0, 118, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ply71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m18fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uotb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5w7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4ydp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdtu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_320sb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="Curve" id="Curve_ncn01"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0ea6"]
+radius = 257.62958
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vja0"]
+radius = 47.042534
+
+[node name="LaserProgresivo" type="Node2D" unique_id=2041932179]
+script = ExtResource("1_ncn01")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=35044157]
+position = Vector2(-8, 24)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_t82yl")
+
+[node name="LaserCabeza" type="AnimatedSprite2D" parent="." unique_id=18273853]
+position = Vector2(-5, -2)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_ply71")
+autoplay = "default"
+frame_progress = 0.38355705
+offset = Vector2(46.91668, -10.072488)
+flip_h = true
+
+[node name="DisparoSpawnPoint" type="Marker2D" parent="LaserCabeza" unique_id=713980258]
+unique_name_in_owner = true
+position = Vector2(93.866104, -16.08104)
+rotation = 2.3984804
+scale = Vector2(1.6666666, 1.6666666)
+
+[node name="LaserLine" type="Line2D" parent="LaserCabeza" unique_id=704474024]
+unique_name_in_owner = true
+visible = false
+position = Vector2(8.333333, 3.3333333)
+scale = Vector2(1.6666666, 1.6666666)
+points = PackedVector2Array(55, -12, 254, -57)
+width = 20.0
+width_curve = SubResource("Curve_ncn01")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=912400165]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1452331298]
+shape = SubResource("CircleShape2D_l0ea6")
+
+[node name="PickerArea" type="Area2D" parent="." unique_id=626474887]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("3_m18fs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickerArea" unique_id=750028760]
+shape = SubResource("CircleShape2D_7vja0")

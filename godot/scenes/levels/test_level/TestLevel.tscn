@@ -15,10 +15,20 @@
 [ext_resource type="Script" uid="uid://8ecml2or4vrs" path="res://scenes/game_elements/asteroide/asteroide_area.gd" id="9_mq7tu"]
 [ext_resource type="Script" uid="uid://d3ntdvhuhk5jj" path="res://scenes/levels/game_over_message.gd" id="10_l0ea6"]
 [ext_resource type="Script" uid="uid://xwiry1f5gslj" path="res://scenes/levels/play_again.gd" id="11_6d6c0"]
+[ext_resource type="Script" uid="uid://m8d4dy4lo82q" path="res://scenes/levels/test_level/selector_de_unidades.gd" id="11_nbsax"]
+[ext_resource type="Texture2D" uid="uid://brfdibfgp2lgf" path="res://assets/images/hud/selectionPanel/unidades_ui(2).png" id="12_qie6o"]
 [ext_resource type="PackedScene" uid="uid://c4mqd7q45joxi" path="res://scenes/music/Music.tscn" id="12_w0124"]
+[ext_resource type="LabelSettings" uid="uid://bbuv7vv2amknh" path="res://ui/selection_panel_label_settings.tres" id="13_an4kq"]
+[ext_resource type="Script" uid="uid://dot3rs1w5llyv" path="res://scenes/levels/test_level/unidad_button.gd" id="13_rryp4"]
+[ext_resource type="PackedScene" uid="uid://c0pme5p7ode1q" path="res://scenes/game_elements/torretas/metralleta.tscn" id="14_fxj3u"]
+[ext_resource type="PackedScene" uid="uid://3x830hanhcvk" path="res://scenes/game_elements/cadenas/laser_sprite.tscn" id="15_eaj0v"]
 [ext_resource type="Script" uid="uid://gxgjdkxkr38h" path="res://scenes/levels/test_level/debuggg.gd" id="15_ta2wi"]
+[ext_resource type="Texture2D" uid="uid://cwrih18i5461b" path="res://assets/images/hud/selectionPanel/SelectionPanel.png" id="15_yi6fa"]
 [ext_resource type="Shader" uid="uid://hgme7icmo77q" path="res://scenes/game_elements/cadenas/laser.gdshader" id="16_sf55r"]
 [ext_resource type="Script" uid="uid://cm0iyiiligpsi" path="res://scenes/levels/test_level/button.gd" id="16_xvx78"]
+[ext_resource type="PackedScene" uid="uid://ccphtijvklfkj" path="res://scenes/game_elements/torretas/laser_progresivo.tscn" id="17_fqbio"]
+[ext_resource type="Script" uid="uid://t34xaqpcgbnn" path="res://scenes/levels/test_level/gorro_frigio.gd" id="22_awduv"]
+[ext_resource type="Texture2D" uid="uid://bm8notya2lij" path="res://assets/images/puntero/Puntero_PlaceHolder_Gorro_WhiteLine.png" id="22_ppy3a"]
 
 [sub_resource type="Gradient" id="Gradient_lln15"]
 offsets = PackedFloat32Array(1)
@@ -104,6 +114,42 @@ points = PackedVector2Array(-57.60608, -79.7906, 106.72958, -64.69769, 158.1365,
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_yi6fa"]
 points = PackedVector2Array(-57.60608, -79.7906, 70.05371, -78.80023, 147.63281, -15.923462, 132.65393, 28.704254, 92.841675, 88.70413, 15.992615, 101.36192, -65.63156, 84.31789, -103.037415, -5.319168)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yi6fa"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awduv"]
+atlas = ExtResource("12_qie6o")
+region = Rect2(576, 76, 160, 84)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppy3a"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.75686276, 0.7921569, 0.80784315, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qie6o"]
+atlas = ExtResource("12_qie6o")
+region = Rect2(84, 60, 124, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppy3a"]
+atlas = ExtResource("12_qie6o")
+region = Rect2(848, 72, 144, 84)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qie6o"]
+line_spacing = -2.0
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbsax"]
+atlas = ExtResource("12_qie6o")
+region = Rect2(348, 60, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rryp4"]
+atlas = ExtResource("12_qie6o")
+region = Rect2(1108, 52, 128, 116)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72f13"]
 bg_color = Color(0.3640713, 0.5877615, 0.8452802, 1)
@@ -191,6 +237,11 @@ colors = PackedColorArray(0, 1, 0, 1)
 gradient = SubResource("Gradient_3vtac")
 width = 32
 height = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rryp4"]
+bg_color = Color(0, 0, 0, 0.9019608)
+border_width_right = 5
+border_width_bottom = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_l0ea6"]
 font_size = 150
@@ -281,6 +332,7 @@ shader_parameter/fixed_edge_size = 0.05
 shader_parameter/noise_scale = Vector2(1, 1)
 
 [node name="TestLevel" type="Node2D" unique_id=550200690 node_paths=PackedStringArray("caminos") groups=["level"]]
+texture_filter = 1
 script = ExtResource("1_3vtac")
 caminos = [NodePath("Camino")]
 
@@ -361,7 +413,6 @@ shake_attenuation = 60.0
 [node name="Asteroide" type="Node2D" parent="." unique_id=728750948]
 position = Vector2(401, 386)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide" unique_id=1043737418]
 position = Vector2(-6, -13)
@@ -381,7 +432,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide7" type="Node2D" parent="." unique_id=1846765825]
 position = Vector2(197, 431)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide7" unique_id=578831630]
 position = Vector2(-6, -13)
@@ -401,7 +451,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide8" type="Node2D" parent="." unique_id=1531942419]
 position = Vector2(621, 208)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide8" unique_id=766105297]
 position = Vector2(-6, -13)
@@ -421,7 +470,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide9" type="Node2D" parent="." unique_id=1970855813]
 position = Vector2(798, 499)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide9" unique_id=2002172149]
 position = Vector2(-6, -13)
@@ -441,7 +489,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide10" type="Node2D" parent="." unique_id=1668508549]
 position = Vector2(408, 537)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide10" unique_id=1793375709]
 position = Vector2(-6, -13)
@@ -461,7 +508,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide11" type="Node2D" parent="." unique_id=289901043]
 position = Vector2(768, 113)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide11" unique_id=1089885275]
 position = Vector2(-6, -13)
@@ -478,30 +524,9 @@ asteroide = NodePath("../..")
 scale = Vector2(0.8, 0.8)
 shape = SubResource("ConvexPolygonShape2D_mq7tu")
 
-[node name="Asteroide5" type="Node2D" parent="." unique_id=122660090]
-position = Vector2(1063, 537)
-script = ExtResource("3_72f13")
-capacidad_de_torretas = null
-
-[node name="Polygon2D" type="Polygon2D" parent="Asteroide5" unique_id=834616886]
-position = Vector2(-6, -13)
-color = Color(0.54509807, 0.31764707, 0.19215687, 1)
-polygon = PackedVector2Array(-59, -6, -47, -42, 27, -50, 81, -25, 92, 21, 65, 40, 33, 40, 16, 69, -34, 77, -72, 29)
-
-[node name="Area2D" type="Area2D" parent="Asteroide5/Polygon2D" unique_id=757680583 node_paths=PackedStringArray("asteroide")]
-collision_layer = 16
-collision_mask = 0
-script = ExtResource("9_mq7tu")
-asteroide = NodePath("../..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroide5/Polygon2D/Area2D" unique_id=1722069953]
-scale = Vector2(0.8, 0.8)
-shape = SubResource("ConvexPolygonShape2D_mq7tu")
-
 [node name="Asteroide6" type="Node2D" parent="." unique_id=288544757]
 position = Vector2(941, 137)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide6" unique_id=2030636191]
 position = Vector2(-6, -13)
@@ -521,7 +546,6 @@ shape = SubResource("ConvexPolygonShape2D_mq7tu")
 [node name="Asteroide2" type="Node2D" parent="." unique_id=724039606]
 position = Vector2(124, 286)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide2" unique_id=2012519361]
 position = Vector2(-13.07119, -5.113118)
@@ -541,7 +565,6 @@ shape = SubResource("ConvexPolygonShape2D_ta2wi")
 [node name="Asteroide3" type="Node2D" parent="." unique_id=1619486736]
 position = Vector2(476, 67.99999)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide3" unique_id=1410310560]
 position = Vector2(-30.171492, -15.958729)
@@ -562,7 +585,6 @@ shape = SubResource("ConvexPolygonShape2D_xvx78")
 [node name="Asteroide4" type="Node2D" parent="." unique_id=534755766]
 position = Vector2(781, 306)
 script = ExtResource("3_72f13")
-capacidad_de_torretas = null
 
 [node name="Polygon2D" type="Polygon2D" parent="Asteroide4" unique_id=1576978188]
 rotation = 0.28875422
@@ -591,6 +613,331 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="SelectorDeUnidades" type="PanelContainer" parent="HUD/Control" unique_id=2061706116]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 370.0
+offset_right = 1139.0
+offset_bottom = 578.5682
+theme_override_styles/panel = SubResource("StyleBoxFlat_yi6fa")
+script = ExtResource("11_nbsax")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Control/SelectorDeUnidades" unique_id=829967994]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer" unique_id=300345547]
+layout_mode = 2
+
+[node name="Torretas" type="VBoxContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer" unique_id=1527194739]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=1671011161]
+layout_mode = 2
+text = "Torreta"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=1870339498]
+layout_mode = 2
+texture_normal = ExtResource("15_yi6fa")
+script = ExtResource("13_rryp4")
+cost = 30
+scene = ExtResource("14_fxj3u")
+description = "[color=light_green]Alta cadencia de fuego[/color]
+[color=pink]Bajo daño por disparo[/color]"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton" unique_id=913007523]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.761906
+offset_top = -13.0
+offset_right = 24.761906
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_awduv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton" unique_id=540150423]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton/MarginContainer" unique_id=1773802169]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
+text = "300"
+label_settings = ExtResource("13_an4kq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TextureButton2" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=2067520554]
+layout_mode = 2
+texture_normal = ExtResource("15_yi6fa")
+script = ExtResource("13_rryp4")
+scene = ExtResource("17_fqbio")
+description = "[color=light_green]Daño continuo que aumenta por segundo[/color]
+[color=pink]Concentra ataque en solo una unidad a la vez[/color]"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton2" unique_id=1801871733]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.761906
+offset_top = -13.0
+offset_right = 24.761906
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qie6o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton2" unique_id=559572100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton2/MarginContainer" unique_id=1982809529]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
+text = "200"
+label_settings = ExtResource("13_an4kq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas" unique_id=18043167]
+layout_mode = 2
+texture_normal = ExtResource("15_yi6fa")
+script = ExtResource("13_rryp4")
+description = "[color=light_green]???[/color]
+[color=pink]???[/color]"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton3" unique_id=1372729852]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.761906
+offset_top = -13.0
+offset_right = 24.761906
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ppy3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton3" unique_id=1146304081]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Torretas/TextureButton3/MarginContainer" unique_id=1906296463]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
+text = "200"
+label_settings = ExtResource("13_an4kq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer" unique_id=324709896]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "+"
+vertical_alignment = 1
+
+[node name="Cadenas" type="VBoxContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer" unique_id=993428162]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=971567003]
+layout_mode = 2
+text = "Cadena"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=105555783]
+layout_mode = 2
+texture_normal = ExtResource("15_yi6fa")
+script = ExtResource("13_rryp4")
+scene = ExtResource("15_eaj0v")
+description = "[color=light_green]Daño continuo.
+Si cruzan los quema
+[/color]"
+
+[node name="Label" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton" unique_id=1359173401]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -6.5
+offset_right = 10.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Laser"
+label_settings = SubResource("LabelSettings_qie6o")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton" unique_id=2041025854]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton/MarginContainer" unique_id=2066120561]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
+text = "200"
+label_settings = ExtResource("13_an4kq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TextureButton2" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=1570589539]
+layout_mode = 2
+texture_normal = ExtResource("15_yi6fa")
+script = ExtResource("13_rryp4")
+description = "[color=light_green]Explosión de alto daño en contacto[/color]
+[color=pink]Tardan en reponerse luego de explotar[/color]"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton2" unique_id=1950602705]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.761906
+offset_top = -13.0
+offset_right = 24.761906
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_nbsax")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton2" unique_id=1166874178]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton2/MarginContainer" unique_id=1847620036]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
+text = "200"
+label_settings = ExtResource("13_an4kq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TextureButton3" type="TextureButton" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas" unique_id=331089034]
+layout_mode = 2
+texture_normal = ExtResource("15_yi6fa")
+script = ExtResource("13_rryp4")
+description = "[color=light_green]Efecto realentizador[/color]
+[color=pink]No hace daño[/color]"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1193705015]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.761906
+offset_top = -13.0
+offset_right = 24.761906
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rryp4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3" unique_id=1889786384]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Cost" type="Label" parent="HUD/Control/SelectorDeUnidades/VBoxContainer/HBoxContainer/Cadenas/TextureButton3/MarginContainer" unique_id=1592740273]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ppy3a")
+text = "200"
+label_settings = ExtResource("13_an4kq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="CostoTotalLabel" type="RichTextLabel" parent="HUD/Control/SelectorDeUnidades/VBoxContainer" unique_id=785076270]
+layout_mode = 2
+bbcode_enabled = true
+text = "Costo total: "
+fit_content = true
+horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="HUD/Control" unique_id=1418058564]
 layout_mode = 1
@@ -686,6 +1033,27 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_rrrqm")
 texture_progress = SubResource("GradientTexture2D_oe0ub")
 
+[node name="UnidadTooltip" type="RichTextLabel" parent="HUD/Control" unique_id=789997293]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.92753476
+anchor_top = 0.5387285
+anchor_right = 0.9952431
+anchor_bottom = 0.54181486
+offset_left = -118.52008
+offset_top = -63.09604
+offset_right = 0.47991943
+offset_bottom = -0.09603882
+pivot_offset = Vector2(120, 63)
+theme_override_font_sizes/normal_font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_rryp4")
+bbcode_enabled = true
+text = "[color=light_green]Efecto realentizador[/color]
+[color=pink]No hace daño[/color]"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
 [node name="GameOverMessage" type="Control" parent="HUD" unique_id=639399914]
 unique_name_in_owner = true
 process_mode = 3
@@ -721,6 +1089,7 @@ text = "Jugar de nuevo"
 script = ExtResource("11_6d6c0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1898408752]
+visible = false
 offset_left = 911.0
 offset_top = 211.0
 offset_right = 1163.0
@@ -779,7 +1148,7 @@ text = "Oro inicial"
 [node name="OroInicial" type="SpinBox" parent="HUD/VBoxContainer/HBoxContainer3" unique_id=50015053]
 layout_mode = 2
 max_value = 5000.0
-value = 10.0
+value = 100.0
 
 [node name="Button" type="Button" parent="HUD/VBoxContainer" unique_id=1510692608]
 layout_mode = 2
@@ -803,3 +1172,13 @@ z_index = -1
 scale = Vector2(0.6046297, 0.60462964)
 texture = ExtResource("3_11iyu")
 centered = false
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1969247832]
+
+[node name="GorroFrigio" type="Sprite2D" parent="CanvasLayer2" unique_id=1148643654]
+texture = ExtResource("22_ppy3a")
+centered = false
+offset = Vector2(-10, -10)
+script = ExtResource("22_awduv")
+metadata/_edit_lock_ = true

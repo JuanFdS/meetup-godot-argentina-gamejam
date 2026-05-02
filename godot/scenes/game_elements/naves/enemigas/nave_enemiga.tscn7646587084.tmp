@@ -59,7 +59,7 @@ radius = 25.079872
 
 [sub_resource type="Gradient" id="Gradient_idoxs"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0, 0, 0, 1)
+colors = PackedColorArray(0, 1, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tdx1q"]
 gradient = SubResource("Gradient_idoxs")

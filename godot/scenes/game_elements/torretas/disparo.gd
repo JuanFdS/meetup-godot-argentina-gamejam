@@ -1,6 +1,6 @@
 extends Node2D
 @onready var area_2d: Area2D = $Area2D
-@export var danio: int = 1
+@export var danio: float = 1.0
 @export var velocidad: float = 750.0
 var direction: Vector2
 

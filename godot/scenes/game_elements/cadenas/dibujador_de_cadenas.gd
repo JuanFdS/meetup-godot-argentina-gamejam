@@ -12,7 +12,7 @@ enum State {
 
 var state: State = State.Nothing
 ## Drawing
-var line: Line2D
+var line: Cadena
 var torreta_1: Torreta
 var torreta_2: Torreta
 var laser_sprite: Sprite2D
@@ -20,6 +20,8 @@ var torreta_being_dragged: Torreta
 @onready var label: RichTextLabel = $Pointer/Label
 @onready var pointer: Node2D = $Pointer
 @onready var detector_de_asteroide: Area2D = $Pointer/DetectorDeAsteroide
+
+var unidad_actual
 
 var hint_text: String
 var pointer_color: Color
@@ -31,7 +33,7 @@ func exit_state():
 			pass
 		State.Drawing:
 			if _can_place_torreta():
-				get_parent().torreta_desplegada()
+				get_parent().torreta_desplegada(unidad_actual)
 				line.modulate = Color.WHITE
 				_asteroide_bajo_el_cursor().agregar_torreta(torreta_2)
 				var line_area := Area2D.new()
@@ -81,12 +83,13 @@ func enter_state():
 		State.Nothing:
 			pass
 		State.Drawing:
-			line = Line2D.new()
+			line = Cadena.new()
+			line.unidad = unidad_actual
 			line.default_color = Color.TRANSPARENT
-			torreta_1 = TORRETA.instantiate()
+			torreta_1 = unidad_actual.torreta_scene.instantiate()
 			torreta_1.process_mode = Node.PROCESS_MODE_DISABLED
 			_asteroide_bajo_el_cursor().agregar_torreta(torreta_1)
-			torreta_2 = TORRETA.instantiate()
+			torreta_2 = unidad_actual.torreta_scene.instantiate()
 			torreta_2.process_mode = Node.PROCESS_MODE_DISABLED
 			laser_sprite = LASER_SPRITE.instantiate()
 			
@@ -173,7 +176,7 @@ func _ready() -> void:
 
 func _can_place_torreta() -> bool:
 	var asteroide = _asteroide_bajo_el_cursor()
-	return asteroide != null and asteroide.esta_libre() and get_parent().valor_costo_por_torre <= get_parent().oro
+	return asteroide != null and asteroide.esta_libre() and unidad_actual.costo_total() <= get_parent().oro
 
 func _torreta_bajo_el_cursor() -> Torreta:
 	return _elemento_bajo_el_cursor("torreta")
