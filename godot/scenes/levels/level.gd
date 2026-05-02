@@ -24,7 +24,7 @@ var health: float = max_health
 var cantidad_olas: int :
 	get():
 		return olas().size()
-var ola_actual: int = 5
+var ola_actual: int = 0
 var ola_actual_contenido = []
 var proximo_evento
 
